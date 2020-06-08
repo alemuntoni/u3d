@@ -1,7 +1,6 @@
-TEMPLATE = app
-CONFIG += console c++11
-CONFIG -= app_bundle
-CONFIG -= qt
+TEMPLATE = lib
+CONFIG += dll
+TARGET = IDTFConverter
 
 INCLUDEPATH += \
 	../RTL/Component/Include \
@@ -14,6 +13,7 @@ INCLUDEPATH += \
 
 HEADERS += \
 	BlockParser.h \
+	Converter.h \
 	DefaultSettings.h \
 	File.h \
 	FileParser.h \
@@ -105,6 +105,7 @@ HEADERS += \
 	Common/ViewResourceList.h
 
 SOURCES += \
+	Converter.cpp \
 	FileParser.cpp \
 	SceneConverter.cpp \
 	PointSetResourceParser.cpp \
@@ -120,7 +121,7 @@ SOURCES += \
 	ResourceListParser.cpp \
 	File.cpp \
 	LineSetConverter.cpp \
-	ConverterDriver.cpp \
+	#ConverterDriver.cpp \
 	ModelConverter.cpp \
 	TextureParser.cpp \
 	NodeConverter.cpp \
