@@ -4,7 +4,7 @@ SUBDIRS = \
 	IFXCoreStatic \
 	IDTFConverter
 
-#SUBDIRS += test
+SUBDIRS += test
 
 IFXCoreStatic.subdir = RTL
 IDTFConverter.subdir = IDTF
