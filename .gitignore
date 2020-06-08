@@ -23,6 +23,7 @@ IDTFGen
 jconfig.h
 zconf.h
 .idea
+*.user
 
 # OS generated files #
 ######################
