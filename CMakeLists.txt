@@ -373,25 +373,6 @@ SET( IFXCoreStatic_SRCS
 	RTL/Dependencies/WildCards/wcmatch.cpp
 	RTL/Kernel/Common/IFXDebug.cpp
 )
-ADD_LIBRARY( IFXCoreStatic STATIC ${IFXCoreStatic_SRCS} ${IFXCoreStatic_HDRS} )
-install(
-	TARGETS IFXCoreStatic
-	ARCHIVE DESTINATION ${LIB_DESTINATION}
-	LIBRARY DESTINATION ${LIB_DESTINATION}
-)
-
-# Something Windows-only 
-# INCLUDE_DIRECTORIES( RTL/Component/Include RTL/Kernel/Include RTL/Platform/Include )
-# 
-# SET( IFXImportingStatic_SRCS
-# 	RTL/Component/Base/IFXCoincidentVertexMap.cpp
-# 	RTL/Component/Base/IFXCornerIter.cpp
-# 	RTL/Component/Base/IFXVectorHasher.cpp
-# 	RTL/Component/Base/IFXBoundingBox.cpp
-# 	RTL/Component/Base/IFXVertexMap.cpp )
-
-# ADD_LIBRARY( IFXImportingStatic ${IFXImportingStatic_SRCS} )
-
 
 INCLUDE_DIRECTORIES( RTL/Component/Include RTL/Kernel/Include RTL/Platform/Include
 	IDTF
@@ -541,8 +522,7 @@ SET( IDTFConverter_HDRS
 	IDTF/Common/ViewResource.h
 	IDTF/Common/ViewResourceList.h
 )
-ADD_LIBRARY( IDTFConverter STATIC ${IDTFConverter_SRCS} ${IDTFConverter_HDRS} )
-add_dependencies( IDTFConverter  IFXCoreStatic )
+ADD_LIBRARY( IDTFConverter STATIC ${IFXCoreStatic_SRCS} ${IFXCoreStatic_HDRS} ${IDTFConverter_SRCS} ${IDTFConverter_HDRS} )
 install(
 	TARGETS IDTFConverter
 	ARCHIVE DESTINATION ${LIB_DESTINATION}
@@ -555,26 +535,11 @@ SET( TEST_SRCS
 add_executable( test ${TEST_SRCS})
 target_link_libraries(
 	test
-	PUBLIC IDTFConverter  IFXCoreStatic ${CMAKE_DL_LIBS} )
+	PUBLIC IDTFConverter  ${CMAKE_DL_LIBS} )
 add_dependencies(
 	test
-	IDTFConverter  IFXCoreStatic )
+	IDTFConverter )
 install(
 	TARGETS test
 	DESTINATION ${BIN_DESTINATION}
 )
-
-#IF(APPLE)
-#  ADD_EXECUTABLE( IDTFConverter ${IDTFConverter_SRCS} ${IDTFConverter_HDRS} )
-#    set_target_properties( IDTFConverter  PROPERTIES
-#	LINK_FLAGS "${MY_LINK_FLAGS} -exported_symbols_list /dev/null" )
-#ENDIF(APPLE)
-#IF(UNIX AND NOT APPLE)
-#  ADD_EXECUTABLE( IDTFConverter ${IDTFConverter_SRCS} ${IDTFConverter_HDRS} )
-#ENDIF(UNIX AND NOT APPLE)
-#target_link_libraries( IDTFConverter  IFXCoreStatic ${CMAKE_DL_LIBS} )
-#add_dependencies( IDTFConverter  IFXCoreStatic )
-#install(
-#	TARGETS IDTFConverter 
-#	DESTINATION ${BIN_DESTINATION}
-#)
