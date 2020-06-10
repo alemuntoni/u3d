@@ -1,10 +1,6 @@
 project(U3D)
 cmake_minimum_required(VERSION 2.8)
 
-if(NOT DEFINED U3D_SHARED)
-    option(U3D_SHARED "Use system libraries for jpeg, png and z instead of bundled" ON)
-endif()
-
 # I do not want to support asm code, so disable it
 # there were real problems with cpuid on Ubuntu 13.04 i386
 ADD_DEFINITIONS( -DU3D_NO_ASM )
@@ -59,52 +55,13 @@ IF(UNIX AND NOT APPLE)
   SET( U3D_PLATFORM Lin32 )
 ENDIF(UNIX AND NOT APPLE)
 
-MESSAGE( STATUS "U3D_SHARED:         " ${U3D_SHARED} )
 
-#IF(U3D_SHARED)
-#  SET( LIB_DESTINATION lib )
-#  SET( BIN_DESTINATION bin )
-#  SET( INCLUDE_DESTINATION include/u3d )
-#  SET( PLUGIN_DESTINATION lib )
-#  SET( SAMPLE_DESTINATION share/u3d/samples )
-#  SET( DOC_DESTINATION share/u3d/docs )
-## check zlib availibility
-#find_package(ZLIB REQUIRED)
-## include_directories(${ZLIB_INCLUDE_DIR})
-## set(ADDITIONAL_LIBRARIES ${ZLIB_LIBRARIES})
-
-## check png availibility
-#find_package(PNG REQUIRED)
-#include_directories(${PNG_INCLUDE_DIR})
-#add_definitions(${PNG_DEFINITIONS})
-#set(ADDITIONAL_LIBRARIES ${ADDITIONAL_LIBRARIES} ${PNG_LIBRARIES})
-
-## check jpeg availibility
-#find_package(JPEG REQUIRED)
-#include_directories(${JPEG_INCLUDE_DIR})
-#set(ADDITIONAL_LIBRARIES ${ADDITIONAL_LIBRARIES} ${JPEG_LIBRARIES})
-
-#SET_PROPERTY( SOURCE
-#	RTL/Platform/${U3D_PLATFORM}/Common/IFXOSLoader.cpp
-#	PROPERTY COMPILE_DEFINITIONS U3DPluginsPath="." U3DCorePath="${CMAKE_INSTALL_PREFIX}/${LIB_DESTINATION}" )
-#IF(STDIO_HACK)
-#SET_PROPERTY( SOURCE
-#	RTL/Component/Exporting/CIFXStdioWriteBufferX.cpp
-#	IDTF/ConverterDriver.cpp
-#	IDTF/File.cpp
-#	PROPERTY COMPILE_DEFINITIONS STDIO_HACK )
-#SET_PROPERTY( SOURCE
-#	RTL/Platform/${U3D_PLATFORM}/Common/IFXOSLoader.cpp
-#	PROPERTY COMPILE_DEFINITIONS U3DPluginsPath="." U3DCorePath="${CMAKE_INSTALL_PREFIX}/${LIB_DESTINATION}" STDIO_HACK )
-#ENDIF(STDIO_HACK)
-
-#ELSE(U3D_SHARED)
-  SET( LIB_DESTINATION u3d )
-  SET( BIN_DESTINATION u3d )
-  SET( INCLUDE_DESTINATION u3d/include )
-  SET( PLUGIN_DESTINATION u3d )
-  SET( SAMPLE_DESTINATION u3d/samples )
-  SET( DOC_DESTINATION u3d/docs )
+SET( LIB_DESTINATION u3d )
+SET( BIN_DESTINATION u3d )
+SET( INCLUDE_DESTINATION u3d/include )
+SET( PLUGIN_DESTINATION u3d )
+SET( SAMPLE_DESTINATION u3d/samples )
+SET( DOC_DESTINATION u3d/docs )
 #============================================================================
 # zlib
 #============================================================================
@@ -340,7 +297,7 @@ SET_PROPERTY( SOURCE
 	PROPERTY COMPILE_DEFINITIONS U3DPluginsPath="Plugins" U3DCorePath="." STDIO_HACK )
 ENDIF(STDIO_HACK)
 
-#ENDIF(U3D_SHARED)
+#====
 
 MESSAGE( STATUS "CMAKE_INSTALL_PREFIX:         " ${CMAKE_INSTALL_PREFIX} )
 MESSAGE( STATUS "LIB_DESTINATION:         " ${LIB_DESTINATION} )
