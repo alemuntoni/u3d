@@ -17,6 +17,10 @@ win32 {
 	U3D_PLATFORM=Win32
 }
 
+include(zlib.pri)
+include(png.pri)
+include(jpeg.pri)
+
 INCLUDEPATH += \
 	$${BASE_SRC_RTL}/Component/Include \
 	$${BASE_SRC_RTL}/Kernel/Include \
@@ -226,231 +230,18 @@ SOURCES += \
 	$${BASE_SRC_RTL}/Dependencies/Predicates/predicates.cpp \
 	$${BASE_SRC_RTL}/Kernel/Common/IFXDebug.cpp
 
-#SET( IFXCore_HDRS
-#	${Component_HDRS}
-#	${Kernel_HDRS}
-#	${Platform_HDRS}
-#	RTL/Component/Base/IFXVectorHasher.h
-#	RTL/Component/BitStream/CIFXBitStreamX.h
-#	RTL/Component/BitStream/CIFXDataBlockQueueX.h
-#	RTL/Component/BitStream/CIFXDataBlockX.h
-#	RTL/Component/Bones/CIFXAnimationModifier.h
-#	RTL/Component/Bones/CIFXBoneWeightsModifier.h
-#	RTL/Component/Bones/CIFXSkeleton.h
-#	RTL/Component/Bones/IFXBoneCache.h
-#	RTL/Component/Bones/IFXBoneCacheArray.h
-#	RTL/Component/Bones/IFXBoneContext.h
-#	RTL/Component/Bones/IFXBoneLinks.h
-#	RTL/Component/Bones/IFXBoneNode.h
-#	RTL/Component/Bones/IFXBoneNodeList.h
-#	RTL/Component/Bones/IFXBonesManagerImpl.h
-#	RTL/Component/Bones/IFXCharacter.h
-#	RTL/Component/Bones/IFXConstraints.h
-#	RTL/Component/Bones/IFXCoreNode.h
-#	RTL/Component/Bones/IFXCylinder.h
-#	RTL/Component/Bones/IFXIKModes.h
-#	RTL/Component/Bones/IFXKeyFrameContext.h
-#	RTL/Component/Bones/IFXLong3.h
-#	RTL/Component/Bones/IFXMatrix3x4.h
-#	RTL/Component/Bones/IFXMeshGroup_Character.h
-#	RTL/Component/Bones/IFXMeshGroup_Impl.h
-#	RTL/Component/Bones/IFXMeshInterface.h
-#	RTL/Component/Bones/IFXMeshVertexMap.h
-#	RTL/Component/Bones/IFXMixerQueueImpl.h
-#	RTL/Component/Bones/IFXMotionManagerImpl.h
-#	RTL/Component/Bones/IFXMotionMixerImpl.h
-#	RTL/Component/Bones/IFXMotionReader.h
-#	RTL/Component/Bones/IFXPackWeights.h
-#	RTL/Component/Bones/IFXSkin.h
-#	RTL/Component/Bones/IFXVertexWeight.h
-#	RTL/Component/Bones/IFXVertexWeights.h
-#	RTL/Component/BoundHierarchy/CIFXAABBHierarchyBuilder.h
-#	RTL/Component/BoundHierarchy/CIFXAxisAlignedBBox.h
-#	RTL/Component/BoundHierarchy/CIFXBoundFace.h
-#	RTL/Component/BoundHierarchy/CIFXBoundHierarchy.h
-#	RTL/Component/BoundHierarchy/CIFXBoundUtil.h
-#	RTL/Component/BoundHierarchy/CIFXBTree.h
-#	RTL/Component/BoundHierarchy/CIFXBTreeNode.h
-#	RTL/Component/BoundHierarchy/CIFXCollisionResult.h
-#	RTL/Component/BoundHierarchy/CIFXPickObject.h
-#	RTL/Component/BoundHierarchy/CIFXPrimitiveOverlap.h
-#	RTL/Component/BoundHierarchy/CIFXResultAllocator.h
-#	RTL/Component/CLODAuthor/CIFXAuthorCLODGen.h
-#	RTL/Component/CLODAuthor/CIFXAuthorMeshMap.h
-#	RTL/Component/CLODAuthor/CIFXSetAdjacencyX.h
-#	RTL/Component/CLODAuthor/CIFXSetX.h
-#	RTL/Component/CLODAuthor/CLODGenerator.h
-#	RTL/Component/CLODAuthor/ContractionRecorder.h
-#	RTL/Component/CLODAuthor/CostMap.h
-#	RTL/Component/CLODAuthor/Face.h
-#	RTL/Component/CLODAuthor/FaceExam.h
-#	RTL/Component/CLODAuthor/FacePtrSet.h
-#	RTL/Component/CLODAuthor/FaceUpdate.h
-#	RTL/Component/CLODAuthor/GeometryObject.h
-#	RTL/Component/CLODAuthor/IFXSList.h
-#	RTL/Component/CLODAuthor/Matrix4x4.h
-#	RTL/Component/CLODAuthor/NormalMap.h
-#	RTL/Component/CLODAuthor/Pair.h
-#	RTL/Component/CLODAuthor/PairFinder.h
-#	RTL/Component/CLODAuthor/PairHash.h
-#	RTL/Component/CLODAuthor/PairHeap.h
-#	RTL/Component/CLODAuthor/Primitives.h
-#	RTL/Component/CLODAuthor/QEConstants.h
-#	RTL/Component/CLODAuthor/SmallPtrSet.h
-#	RTL/Component/CLODAuthor/Vertex.h
-#	RTL/Component/CLODAuthor/VertexPairContractor.h
-#	RTL/Component/Common/CIFXCoreServices.h
-#	RTL/Component/Common/CIFXCoreServicesRef.h
-#	RTL/Component/Common/CIFXHashMap.h
-#	RTL/Component/Common/CIFXIDManager.h
-#	RTL/Component/Common/CIFXMetaData.h
-#	RTL/Component/Common/CIFXNameMap.h
-#	RTL/Component/Common/CIFXSimpleHash.h
-#	RTL/Component/Common/CIFXVoidWrapper.h
-#	RTL/Component/Common/IFXComponentFactories.h
-#	RTL/Component/Generators/CLOD/CIFXAuthorCLODResource.h
-#	RTL/Component/Generators/CLOD/CIFXAuthorMesh.h
-#	RTL/Component/Generators/CLOD/CIFXAuthorMeshScrub.h
-#	RTL/Component/Generators/CLOD/CIFXCLODModifier.h
-#	RTL/Component/Generators/CLOD/CIFXMeshCompiler.h
-#	RTL/Component/Generators/CLOD/CIFXMeshMap.h
-#	RTL/Component/Generators/CLOD/IFXCLODManager.h
-#	RTL/Component/Generators/CLOD/IFXNeighborResController.h
-#	RTL/Component/Generators/Glyph2D/CIFXContour.h
-#	RTL/Component/Generators/Glyph2D/CIFXContourExtruder.h
-#	RTL/Component/Generators/Glyph2D/CIFXContourGenerator.h
-#	RTL/Component/Generators/Glyph2D/CIFXContourTessellator.h
-#	RTL/Component/Generators/Glyph2D/CIFXGeom2D.h
-#	RTL/Component/Generators/Glyph2D/CIFXGlyph2DCommands.h
-#	RTL/Component/Generators/Glyph2D/CIFXGlyph2DModifier.h
-#	RTL/Component/Generators/Glyph2D/CIFXGlyph3DGenerator.h
-#	RTL/Component/Generators/Glyph2D/CIFXGlyphCommandList.h
-#	RTL/Component/Generators/Glyph2D/CIFXQuadEdge.h
-#	RTL/Component/Generators/Glyph2D/IFXContour.h
-#	RTL/Component/Generators/Glyph2D/IFXContourExtruder.h
-#	RTL/Component/Generators/Glyph2D/IFXContourGenerator.h
-#	RTL/Component/Generators/Glyph2D/IFXContourTessellator.h
-#	RTL/Component/Generators/Glyph2D/IFXGlyph3DGenerator.h
-#	RTL/Component/Generators/LineSet/CIFXAuthorLineSet.h
-#	RTL/Component/Generators/LineSet/CIFXAuthorLineSetAnalyzer.h
-#	RTL/Component/Generators/LineSet/CIFXAuthorLineSetResource.h
-#	RTL/Component/Generators/PointSet/CIFXAuthorPointSet.h
-#	RTL/Component/Generators/PointSet/CIFXAuthorPointSetResource.h
-#	RTL/Component/Mesh/CIFXInterleavedData.h
-#	RTL/Component/Mesh/CIFXMesh.h
-#	RTL/Component/Mesh/CIFXMeshGroup.h
-#	RTL/Component/Mesh/CIFXNeighborMesh.h
-#	RTL/Component/Mesh/CIFXRenderable.h
-#	RTL/Component/Mesh/IFXFaceLists.h
-#	RTL/Component/ModifierChain/CIFXDidRegistry.h
-#	RTL/Component/ModifierChain/CIFXModifier.h
-#	RTL/Component/ModifierChain/CIFXModifierChain.h
-#	RTL/Component/ModifierChain/CIFXModifierDataElementIter.h
-#	RTL/Component/ModifierChain/CIFXModifierDataPacket.h
-#	RTL/Component/ModifierChain/CIFXObserverStateTree.h
-#	RTL/Component/ModifierChain/CIFXSubject.h
-#	RTL/Component/ModifierChain/CRedBlackTree.h
-#	RTL/Component/ModifierChain/IFXModifierChainInternal.h
-#	RTL/Component/ModifierChain/IFXModifierChainState.h
-#	RTL/Component/ModifierChain/IFXModifierDataPacketInternal.h
-#	RTL/Component/ModifierChain/IFXSet.h
-#	RTL/Component/Palette/CIFXPalette.h
-#	RTL/Component/Palette/CIFXSimpleObject.h
-#	RTL/Component/Rendering/CIFXDeviceBase.h
-#	RTL/Component/Rendering/CIFXDeviceLight.h
-#	RTL/Component/Rendering/CIFXDeviceTexture.h
-#	RTL/Component/Rendering/CIFXDeviceTexUnit.h
-#	RTL/Component/Rendering/CIFXRender.h
-#	RTL/Component/Rendering/CIFXRenderContext.h
-#	RTL/Component/Rendering/CIFXRenderDevice.h
-#	RTL/Component/Rendering/CIFXRenderServices.h
-#	RTL/Component/Rendering/DX7/CIFXDeviceLightDX7.h
-#	RTL/Component/Rendering/DX7/CIFXDeviceTextureDX7.h
-#	RTL/Component/Rendering/DX7/CIFXDeviceTexUnitDX7.h
-#	RTL/Component/Rendering/DX7/CIFXDirectX7.h
-#	RTL/Component/Rendering/DX7/CIFXRenderDeviceDX7.h
-#	RTL/Component/Rendering/DX7/CIFXRenderDX7.h
-#	RTL/Component/Rendering/DX7/IFXRenderPCHDX7.h
-#	RTL/Component/Rendering/DX8/CIFXDeviceLightDX8.h
-#	RTL/Component/Rendering/DX8/CIFXDeviceTextureDX8.h
-#	RTL/Component/Rendering/DX8/CIFXDeviceTexUnitDX8.h
-#	RTL/Component/Rendering/DX8/CIFXDirectX8.h
-#	RTL/Component/Rendering/DX8/CIFXRenderDeviceDX8.h
-#	RTL/Component/Rendering/DX8/CIFXRenderDX8.h
-#	RTL/Component/Rendering/DX8/IFXRenderPCHDX8.h
-#	RTL/Component/Rendering/IFXAAFilter.h
-#	RTL/Component/Rendering/IFXRenderPCH.h
-#	RTL/Component/Rendering/Null/CIFXDeviceLightNULL.h
-#	RTL/Component/Rendering/Null/CIFXDeviceTextureNULL.h
-#	RTL/Component/Rendering/Null/CIFXDeviceTexUnitNULL.h
-#	RTL/Component/Rendering/Null/CIFXRenderDeviceNULL.h
-#	RTL/Component/Rendering/Null/CIFXRenderNULL.h
-#	RTL/Component/Rendering/Null/IFXRenderPCHNULL.h
-#	RTL/Component/Rendering/OpenGL/CIFXDeviceLightOGL.h
-#	RTL/Component/Rendering/OpenGL/CIFXDeviceTextureOGL.h
-#	RTL/Component/Rendering/OpenGL/CIFXDeviceTexUnitOGL.h
-#	RTL/Component/Rendering/OpenGL/CIFXOpenGL.h
-#	RTL/Component/Rendering/OpenGL/CIFXRenderDeviceOGL.h
-#	RTL/Component/Rendering/OpenGL/CIFXRenderOGL.h
-#	RTL/Component/Rendering/OpenGL/IFXRenderPCHOGL.h
-#	RTL/Component/SceneGraph/CIFXBoundSphereDataElement.h
-#	RTL/Component/SceneGraph/CIFXDevice.h
-#	RTL/Component/SceneGraph/CIFXDummyModifier.h
-#	RTL/Component/SceneGraph/CIFXFileReference.h
-#	RTL/Component/SceneGraph/CIFXGroup.h
-#	RTL/Component/SceneGraph/CIFXLight.h
-#	RTL/Component/SceneGraph/CIFXLightResource.h
-#	RTL/Component/SceneGraph/CIFXLightSet.h
-#	RTL/Component/SceneGraph/CIFXMarker.h
-#	RTL/Component/SceneGraph/CIFXMaterialResource.h
-#	RTL/Component/SceneGraph/CIFXMixerConstruct.h
-#	RTL/Component/SceneGraph/CIFXModel.h
-#	RTL/Component/SceneGraph/CIFXMotionResource.h
-#	RTL/Component/SceneGraph/CIFXNode.h
-#	RTL/Component/SceneGraph/CIFXResourceClient.h
-#	RTL/Component/SceneGraph/CIFXSceneGraph.h
-#	RTL/Component/SceneGraph/CIFXShaderList.h
-#	RTL/Component/SceneGraph/CIFXSimpleCollection.h
-#	RTL/Component/SceneGraph/CIFXSimpleList.h
-#	RTL/Component/SceneGraph/CIFXView.h
-#	RTL/Component/SceneGraph/CIFXViewResource.h
-#	RTL/Component/SceneGraph/IFXSceneGraphPCH.h
-#	RTL/Component/Shaders/CIFXShader.h
-#	RTL/Component/Shaders/CIFXShaderLitTexture.h
-#	RTL/Component/Shaders/CIFXShadingModifier.h
-#	RTL/Component/Subdiv/CIFXSubdivModifier.h
-#	RTL/Component/Subdiv/IFXAttributeNeighborhood.h
-#	RTL/Component/Subdiv/IFXBFMaskLayout.h
-#	RTL/Component/Subdiv/IFXButterflyMask.h
-#	RTL/Component/Subdiv/IFXButterflyScheme.h
-#	RTL/Component/Subdiv/IFXScreenSpaceMetric.h
-#	RTL/Component/Subdiv/IFXSharedUnitAllocator.h
-#	RTL/Component/Subdiv/IFXSpecularMetric.h
-#	RTL/Component/Subdiv/IFXSubdivisionManager.h
-#	RTL/Component/Subdiv/IFXTQTAddress.h
-#	RTL/Component/Subdiv/IFXTQTAttribute.h
-#	RTL/Component/Subdiv/IFXTQTBaseTriangle.h
-#	RTL/Component/Subdiv/IFXTQTTriangle.h
-#	RTL/Component/Subdiv/IFXTQTTriangleAllocator.h
-#	RTL/Component/Subdiv/IFXTQTVertex.h
-#	RTL/Component/Subdiv/IFXVertexAllocator.h
-#	RTL/Component/Texture/CIFXImageTools.h
-#	RTL/Component/Texture/CIFXTextureImageTools.h
-#	RTL/Component/Texture/CIFXTextureObject.h
-#	RTL/Component/Texture/CIFXUtilities.h
-#	RTL/Component/Texture/IFXTextureErrors.h
-#	RTL/Component/UVGenerator/CIFXUVGenerator.h
-#	RTL/Component/UVGenerator/CIFXUVMapperCylindrical.h
-#	RTL/Component/UVGenerator/CIFXUVMapperNone.h
-#	RTL/Component/UVGenerator/CIFXUVMapperPlanar.h
-#	RTL/Component/UVGenerator/CIFXUVMapperReflection.h
-#	RTL/Component/UVGenerator/CIFXUVMapperSpherical.h
-#	RTL/Kernel/IFXCom/CIFXComponentManager.h
-#	RTL/Kernel/IFXCom/CIFXGuidHashMap.h
-#	RTL/Kernel/IFXCom/CIFXPluginProxy.h
-#	RTL/Kernel/Common/CIFXConnector.h
-#	RTL/Kernel/Common/CIFXPerformanceTimer.h
-#	RTL/Dependencies/FNVHash/FNVPlusPlus.h
-#	RTL/Dependencies/Predicates/predicates.h
-#	RTL/Dependencies/WildCards/wcmatch.h
-#)
+#IF(WIN32)
+#  SET( CORE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Win32/IFXCore )
+#  ADD_LIBRARY( IFXCore SHARED ${IFXCore_SRCS} ${IFXCore_HDRS} ${CORE_DIR}/IFXCore.rc ${CORE_DIR}/IFXResource.h ${CORE_DIR}/IFXCore.def ${DEPENDENCIES_SRCS} )
+#ENDIF(WIN32)
+#IF(APPLE)
+#  ADD_LIBRARY( IFXCore MODULE ${IFXCore_SRCS} ${IFXCore_HDRS} ${DEPENDENCIES_SRCS} )
+#  set_target_properties( IFXCore PROPERTIES
+#	LINK_FLAGS "${MY_LINK_FLAGS} -exported_symbols_list ${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Mac32/IFXCore/IFXCore.def" )
+#ENDIF(APPLE)
+#IF(UNIX AND NOT APPLE)
+#  ADD_LIBRARY( IFXCore MODULE ${IFXCore_SRCS} ${IFXCore_HDRS} ${DEPENDENCIES_SRCS} )
+#  set_target_properties( IFXCore PROPERTIES
+#	LINK_FLAGS "-Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Lin32/IFXCore/IFXCore.list -Wl,--no-undefined" )
+#  target_link_libraries( IFXCore ${CMAKE_DL_LIBS} )
+#ENDIF(UNIX AND NOT APPLE)

@@ -840,7 +840,7 @@ SET( IFXCore_SRCS
 	RTL/Component/UVGenerator/CIFXUVMapperReflection.cpp
 	RTL/Component/UVGenerator/CIFXUVMapperSpherical.cpp
 	RTL/Kernel/Common/CIFXConnector.cpp
-	RTL/Kernel/Common/CIFXPerformanceTimer.cpp 
+	RTL/Kernel/Common/CIFXPerformanceTimer.cpp
 	RTL/Kernel/Common/IFXCheckX.cpp
 	RTL/Kernel/IFXCom/CIFXComponentManager.cpp
 	RTL/Kernel/IFXCom/CIFXGUIDHashMap.cpp
