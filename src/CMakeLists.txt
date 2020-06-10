@@ -90,7 +90,7 @@ set(CMAKE_REQUIRED_DEFINITIONS) # clear variable
 #
 check_function_exists(fseeko HAVE_FSEEKO)
 if(NOT HAVE_FSEEKO)
-    add_definitions(-DNO_FSEEKO)
+	add_definitions(-DNO_FSEEKO)
 endif()
 
 #
@@ -99,48 +99,48 @@ endif()
 check_include_file(unistd.h Z_HAVE_UNISTD_H)
 
 if(MSVC)
-    add_definitions(-D_CRT_SECURE_NO_DEPRECATE)
-    add_definitions(-D_CRT_NONSTDC_NO_DEPRECATE)
+	add_definitions(-D_CRT_SECURE_NO_DEPRECATE)
+	add_definitions(-D_CRT_NONSTDC_NO_DEPRECATE)
 endif()
 
 SET(ZLIB_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RTL/Dependencies/zlib)
 configure_file(${ZLIB_SOURCE_DIR}/zconf.h.cmakein
-               ${CMAKE_CURRENT_BINARY_DIR}/zconf.h @ONLY)
+			   ${CMAKE_CURRENT_BINARY_DIR}/zconf.h @ONLY)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${ZLIB_SOURCE_DIR})
 
 
 set(ZLIB_PUBLIC_HDRS
-    ${CMAKE_CURRENT_BINARY_DIR}/zconf.h
-    ${ZLIB_SOURCE_DIR}/zlib.h
+	${CMAKE_CURRENT_BINARY_DIR}/zconf.h
+	${ZLIB_SOURCE_DIR}/zlib.h
 )
 set(ZLIB_PRIVATE_HDRS
-    ${ZLIB_SOURCE_DIR}/crc32.h
-    ${ZLIB_SOURCE_DIR}/deflate.h
-    ${ZLIB_SOURCE_DIR}/gzguts.h
-    ${ZLIB_SOURCE_DIR}/inffast.h
-    ${ZLIB_SOURCE_DIR}/inffixed.h
-    ${ZLIB_SOURCE_DIR}/inflate.h
-    ${ZLIB_SOURCE_DIR}/inftrees.h
-    ${ZLIB_SOURCE_DIR}/trees.h
-    ${ZLIB_SOURCE_DIR}/zutil.h
+	${ZLIB_SOURCE_DIR}/crc32.h
+	${ZLIB_SOURCE_DIR}/deflate.h
+	${ZLIB_SOURCE_DIR}/gzguts.h
+	${ZLIB_SOURCE_DIR}/inffast.h
+	${ZLIB_SOURCE_DIR}/inffixed.h
+	${ZLIB_SOURCE_DIR}/inflate.h
+	${ZLIB_SOURCE_DIR}/inftrees.h
+	${ZLIB_SOURCE_DIR}/trees.h
+	${ZLIB_SOURCE_DIR}/zutil.h
 )
 set(ZLIB_SRCS
-    ${ZLIB_SOURCE_DIR}/adler32.c
-    ${ZLIB_SOURCE_DIR}/compress.c
-    ${ZLIB_SOURCE_DIR}/crc32.c
-    ${ZLIB_SOURCE_DIR}/deflate.c
-    ${ZLIB_SOURCE_DIR}/gzclose.c
-    ${ZLIB_SOURCE_DIR}/gzlib.c
-    ${ZLIB_SOURCE_DIR}/gzread.c
-    ${ZLIB_SOURCE_DIR}/gzwrite.c
-    ${ZLIB_SOURCE_DIR}/inflate.c
-    ${ZLIB_SOURCE_DIR}/infback.c
-    ${ZLIB_SOURCE_DIR}/inftrees.c
-    ${ZLIB_SOURCE_DIR}/inffast.c
-    ${ZLIB_SOURCE_DIR}/trees.c
-    ${ZLIB_SOURCE_DIR}/uncompr.c
-    ${ZLIB_SOURCE_DIR}/zutil.c
+	${ZLIB_SOURCE_DIR}/adler32.c
+	${ZLIB_SOURCE_DIR}/compress.c
+	${ZLIB_SOURCE_DIR}/crc32.c
+	${ZLIB_SOURCE_DIR}/deflate.c
+	${ZLIB_SOURCE_DIR}/gzclose.c
+	${ZLIB_SOURCE_DIR}/gzlib.c
+	${ZLIB_SOURCE_DIR}/gzread.c
+	${ZLIB_SOURCE_DIR}/gzwrite.c
+	${ZLIB_SOURCE_DIR}/inflate.c
+	${ZLIB_SOURCE_DIR}/infback.c
+	${ZLIB_SOURCE_DIR}/inftrees.c
+	${ZLIB_SOURCE_DIR}/inffast.c
+	${ZLIB_SOURCE_DIR}/trees.c
+	${ZLIB_SOURCE_DIR}/uncompr.c
+	${ZLIB_SOURCE_DIR}/zutil.c
 )
 
 
@@ -150,12 +150,12 @@ set(ZLIB_SRCS
 
 if(NOT WIN32)
   find_library(M_LIBRARY
-    NAMES m
-    PATHS /usr/lib /usr/local/lib
+	NAMES m
+	PATHS /usr/lib /usr/local/lib
   )
   if(NOT M_LIBRARY)
-    message(STATUS
-      "math library 'libm' not found - floating point support disabled")
+	message(STATUS
+	  "math library 'libm' not found - floating point support disabled")
   endif()
 else()
   # not needed on windows
@@ -206,28 +206,28 @@ CHECK_INCLUDE_FILE(stdlib.h HAVE_STDLIB_H)
 
 set(JPEG_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RTL/Dependencies/jpeg)
 configure_file(${JPEG_SOURCE_DIR}/jconfig.h.cmake
-               ${CMAKE_CURRENT_BINARY_DIR}/jconfig.h)
+			   ${CMAKE_CURRENT_BINARY_DIR}/jconfig.h)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${JPEG_SOURCE_DIR})
 
 if(MSVC)
-    add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 endif()
 
 set(JPEG_PUBLIC_HDRS
-    ${JPEG_SOURCE_DIR}/jerror.h
-    ${JPEG_SOURCE_DIR}/jmorecfg.h
-    ${JPEG_SOURCE_DIR}/jpeglib.h
-    ${CMAKE_CURRENT_BINARY_DIR}/jconfig.h
+	${JPEG_SOURCE_DIR}/jerror.h
+	${JPEG_SOURCE_DIR}/jmorecfg.h
+	${JPEG_SOURCE_DIR}/jpeglib.h
+	${CMAKE_CURRENT_BINARY_DIR}/jconfig.h
 )
 set(JPEG_PRIVATE_HDRS
-    ${JPEG_SOURCE_DIR}/cderror.h
-    ${JPEG_SOURCE_DIR}/jdct.h
-    ${JPEG_SOURCE_DIR}/jinclude.h
-    ${JPEG_SOURCE_DIR}/jmemsys.h
-    ${JPEG_SOURCE_DIR}/jpegint.h
-    ${JPEG_SOURCE_DIR}/jversion.h
-    ${JPEG_SOURCE_DIR}/transupp.h
+	${JPEG_SOURCE_DIR}/cderror.h
+	${JPEG_SOURCE_DIR}/jdct.h
+	${JPEG_SOURCE_DIR}/jinclude.h
+	${JPEG_SOURCE_DIR}/jmemsys.h
+	${JPEG_SOURCE_DIR}/jpegint.h
+	${JPEG_SOURCE_DIR}/jversion.h
+	${JPEG_SOURCE_DIR}/transupp.h
 )
 
 # memmgr back ends: compile only one of these into a working library
@@ -236,51 +236,51 @@ set(JPEG_PRIVATE_HDRS
 SET(JPEG_systemdependent_SRCS ${JPEG_SOURCE_DIR}/jmemnobs.c)
 
 set(JPEG_SRCS
-    ${JPEG_SOURCE_DIR}/jaricom.c
-    ${JPEG_SOURCE_DIR}/jcapimin.c
-    ${JPEG_SOURCE_DIR}/jcapistd.c
-    ${JPEG_SOURCE_DIR}/jcarith.c
-    ${JPEG_SOURCE_DIR}/jccoefct.c
-    ${JPEG_SOURCE_DIR}/jccolor.c
-    ${JPEG_SOURCE_DIR}/jcdctmgr.c
-    ${JPEG_SOURCE_DIR}/jchuff.c
-    ${JPEG_SOURCE_DIR}/jcinit.c
-    ${JPEG_SOURCE_DIR}/jcmainct.c
-    ${JPEG_SOURCE_DIR}/jcmarker.c
-    ${JPEG_SOURCE_DIR}/jcmaster.c
-    ${JPEG_SOURCE_DIR}/jcomapi.c
-    ${JPEG_SOURCE_DIR}/jcparam.c
-    ${JPEG_SOURCE_DIR}/jcprepct.c
-    ${JPEG_SOURCE_DIR}/jcsample.c
-    ${JPEG_SOURCE_DIR}/jctrans.c
-    ${JPEG_SOURCE_DIR}/jdapimin.c
-    ${JPEG_SOURCE_DIR}/jdapistd.c
-    ${JPEG_SOURCE_DIR}/jdarith.c
-    ${JPEG_SOURCE_DIR}/jdatadst.c
-    ${JPEG_SOURCE_DIR}/jdatasrc.c
-    ${JPEG_SOURCE_DIR}/jdcoefct.c
-    ${JPEG_SOURCE_DIR}/jdcolor.c
-    ${JPEG_SOURCE_DIR}/jddctmgr.c
-    ${JPEG_SOURCE_DIR}/jdhuff.c
-    ${JPEG_SOURCE_DIR}/jdinput.c
-    ${JPEG_SOURCE_DIR}/jdmainct.c
-    ${JPEG_SOURCE_DIR}/jdmarker.c
-    ${JPEG_SOURCE_DIR}/jdmaster.c
-    ${JPEG_SOURCE_DIR}/jdmerge.c
-    ${JPEG_SOURCE_DIR}/jdpostct.c
-    ${JPEG_SOURCE_DIR}/jdsample.c
-    ${JPEG_SOURCE_DIR}/jdtrans.c
-    ${JPEG_SOURCE_DIR}/jerror.c
-    ${JPEG_SOURCE_DIR}/jfdctflt.c
-    ${JPEG_SOURCE_DIR}/jfdctfst.c
-    ${JPEG_SOURCE_DIR}/jfdctint.c
-    ${JPEG_SOURCE_DIR}/jidctflt.c
-    ${JPEG_SOURCE_DIR}/jidctfst.c
-    ${JPEG_SOURCE_DIR}/jidctint.c
-    ${JPEG_SOURCE_DIR}/jquant1.c
-    ${JPEG_SOURCE_DIR}/jquant2.c
-    ${JPEG_SOURCE_DIR}/jutils.c
-    ${JPEG_SOURCE_DIR}/jmemmgr.c)
+	${JPEG_SOURCE_DIR}/jaricom.c
+	${JPEG_SOURCE_DIR}/jcapimin.c
+	${JPEG_SOURCE_DIR}/jcapistd.c
+	${JPEG_SOURCE_DIR}/jcarith.c
+	${JPEG_SOURCE_DIR}/jccoefct.c
+	${JPEG_SOURCE_DIR}/jccolor.c
+	${JPEG_SOURCE_DIR}/jcdctmgr.c
+	${JPEG_SOURCE_DIR}/jchuff.c
+	${JPEG_SOURCE_DIR}/jcinit.c
+	${JPEG_SOURCE_DIR}/jcmainct.c
+	${JPEG_SOURCE_DIR}/jcmarker.c
+	${JPEG_SOURCE_DIR}/jcmaster.c
+	${JPEG_SOURCE_DIR}/jcomapi.c
+	${JPEG_SOURCE_DIR}/jcparam.c
+	${JPEG_SOURCE_DIR}/jcprepct.c
+	${JPEG_SOURCE_DIR}/jcsample.c
+	${JPEG_SOURCE_DIR}/jctrans.c
+	${JPEG_SOURCE_DIR}/jdapimin.c
+	${JPEG_SOURCE_DIR}/jdapistd.c
+	${JPEG_SOURCE_DIR}/jdarith.c
+	${JPEG_SOURCE_DIR}/jdatadst.c
+	${JPEG_SOURCE_DIR}/jdatasrc.c
+	${JPEG_SOURCE_DIR}/jdcoefct.c
+	${JPEG_SOURCE_DIR}/jdcolor.c
+	${JPEG_SOURCE_DIR}/jddctmgr.c
+	${JPEG_SOURCE_DIR}/jdhuff.c
+	${JPEG_SOURCE_DIR}/jdinput.c
+	${JPEG_SOURCE_DIR}/jdmainct.c
+	${JPEG_SOURCE_DIR}/jdmarker.c
+	${JPEG_SOURCE_DIR}/jdmaster.c
+	${JPEG_SOURCE_DIR}/jdmerge.c
+	${JPEG_SOURCE_DIR}/jdpostct.c
+	${JPEG_SOURCE_DIR}/jdsample.c
+	${JPEG_SOURCE_DIR}/jdtrans.c
+	${JPEG_SOURCE_DIR}/jerror.c
+	${JPEG_SOURCE_DIR}/jfdctflt.c
+	${JPEG_SOURCE_DIR}/jfdctfst.c
+	${JPEG_SOURCE_DIR}/jfdctint.c
+	${JPEG_SOURCE_DIR}/jidctflt.c
+	${JPEG_SOURCE_DIR}/jidctfst.c
+	${JPEG_SOURCE_DIR}/jidctint.c
+	${JPEG_SOURCE_DIR}/jquant1.c
+	${JPEG_SOURCE_DIR}/jquant2.c
+	${JPEG_SOURCE_DIR}/jutils.c
+	${JPEG_SOURCE_DIR}/jmemmgr.c)
 
 SET(DEPENDENCIES_SRCS ${ZLIB_SRCS} ${ZLIB_PUBLIC_HDRS} ${ZLIB_PRIVATE_HDRS} ${libpng_sources} ${JPEG_systemdependent_SRCS} ${JPEG_SRCS} ${JPEG_PUBLIC_HDRS} ${JPEG_PRIVATE_HDRS})
 SET_PROPERTY( SOURCE
@@ -556,6 +556,7 @@ SET( Platform_HDRS
 	RTL/Platform/Include/IFXOSUtilities.h
 	RTL/Platform/Include/IFXRenderWindow.h
 )
+
 # IFXCoreStatic
 INCLUDE_DIRECTORIES( RTL/Component/Include RTL/Kernel/Include RTL/Platform/Include
 	RTL/Component/Base
@@ -1218,120 +1219,120 @@ install(
 	LIBRARY DESTINATION ${PLUGIN_DESTINATION}
 )
 
-INCLUDE_DIRECTORIES( RTL/Component/Include RTL/Kernel/Include RTL/Platform/Include
-	RTL/Component/Importing
-	RTL/Dependencies/WildCards )
-SET( IFXImporting_HDRS
-	${Component_HDRS}
-	${Kernel_HDRS}
-	${Platform_HDRS}
-	RTL/Component/Importing/CIFXAnimationModifierDecoder.h
-	RTL/Component/Importing/CIFXAuthorCLODDecoder.h
-	RTL/Component/Importing/CIFXBlockReaderX.h
-	RTL/Component/Importing/CIFXBoneWeightsModifierDecoder.h
-	RTL/Component/Importing/CIFXBTTHash.h
-	RTL/Component/Importing/CIFXCLODModifierDecoder.h
-	RTL/Component/Importing/CIFXDecoderChainX.h
-	RTL/Component/Importing/CIFXDummyModifierDecoder.h
-	RTL/Component/Importing/CIFXGlyphModifierDecoder.h
-	RTL/Component/Importing/CIFXGroupDecoder.h
-	RTL/Component/Importing/CIFXInternetReadBufferX.h
-	RTL/Component/Importing/CIFXLightDecoder.h
-	RTL/Component/Importing/CIFXLightResourceDecoder.h
-	RTL/Component/Importing/CIFXLineSetDecoder.h
-	RTL/Component/Importing/CIFXLoadManager.h
-	RTL/Component/Importing/CIFXMaterialDecoder.h
-	RTL/Component/Importing/CIFXModelDecoder.h
-	RTL/Component/Importing/CIFXMotionDecoder.h
-	RTL/Component/Importing/CIFXNodeDecoder.h
-	RTL/Component/Importing/CIFXPointSetDecoder.h
-	RTL/Component/Importing/CIFXShaderLitTextureDecoder.h
-	RTL/Component/Importing/CIFXShadingModifierDecoder.h
-	RTL/Component/Importing/CIFXStdioReadBufferX.h
-	RTL/Component/Importing/CIFXSubdivisionModifierDecoder.h
-	RTL/Component/Importing/CIFXTextureDecoder.h
-	RTL/Component/Importing/CIFXViewDecoder.h
-	RTL/Component/Importing/CIFXViewResourceDecoder.h
-	RTL/Component/Importing/IFXInternetConnectionX.h
-	RTL/Component/Importing/IFXInternetSessionX.h
-	RTL/Component/Importing/IFXSocketStream.h
-	RTL/Dependencies/WildCards/wcmatch.h
-)
-SET( IFXImporting_SRCS
-	RTL/Platform/${U3D_PLATFORM}/IFXImporting/IFXImportingDllMain.cpp
-	RTL/Component/Importing/CIFXAnimationModifierDecoder.cpp
-	RTL/Component/Importing/CIFXAuthorCLODDecoder.cpp
-	RTL/Component/Importing/CIFXAuthorCLODDecoder_P.cpp
-	RTL/Component/Importing/CIFXAuthorCLODDecoder_S.cpp
-	RTL/Component/Importing/CIFXBlockReaderX.cpp
-	RTL/Component/Importing/CIFXBoneWeightsModifierDecoder.cpp
-	RTL/Component/Importing/CIFXBTTHash.cpp
-	RTL/Component/Importing/CIFXCLODModifierDecoder.cpp
-	RTL/Component/Importing/CIFXDecoderChainX.cpp
-	RTL/Component/Importing/CIFXDummyModifierDecoder.cpp
-	RTL/Component/Importing/CIFXGlyphModifierDecoder.cpp
-	RTL/Component/Importing/CIFXGroupDecoder.cpp
-	RTL/Component/Importing/CIFXInternetReadBufferX.cpp
-	RTL/Component/Importing/CIFXLightDecoder.cpp
-	RTL/Component/Importing/CIFXLightResourceDecoder.cpp
-	RTL/Component/Importing/CIFXLineSetDecoder.cpp
-	RTL/Component/Importing/CIFXLoadManager.cpp
-	RTL/Component/Importing/CIFXMaterialDecoder.cpp
-	RTL/Component/Importing/CIFXModelDecoder.cpp
-	RTL/Component/Importing/CIFXMotionDecoder.cpp
-	RTL/Component/Importing/CIFXNodeDecoder.cpp
-	RTL/Component/Importing/CIFXPointSetDecoder.cpp
-	RTL/Component/Importing/CIFXShaderLitTextureDecoder.cpp
-	RTL/Component/Importing/CIFXShadingModifierDecoder.cpp
-	RTL/Component/Importing/CIFXStdioReadBufferX.cpp
-	RTL/Component/Importing/CIFXSubdivisionModifierDecoder.cpp
-	RTL/Component/Importing/CIFXTextureDecoder.cpp
-	RTL/Component/Importing/CIFXViewDecoder.cpp
-	RTL/Component/Importing/CIFXViewResourceDecoder.cpp
-	RTL/Component/Importing/IFXImporting.cpp
-	RTL/Component/Importing/IFXImportingGuids.cpp
-	RTL/Component/Importing/IFXInternetConnectionX.cpp
-	RTL/Component/Importing/IFXInternetSessionX.cpp
-	RTL/Component/Importing/IFXModifierBaseDecoder.cpp
-	RTL/Component/Importing/IFXSocketStream.cpp
-	RTL/IFXCorePluginStatic/IFXCorePluginStatic.cpp
-	RTL/Platform/${U3D_PLATFORM}/Common/IFXOSUtilities.cpp
-	RTL/Platform/${U3D_PLATFORM}/Common/IFXOSLoader.cpp
-	RTL/Platform/${U3D_PLATFORM}/Common/IFXOSSocket.cpp
-	RTL/Kernel/DataTypes/IFXCoreArray.cpp
-	RTL/Kernel/DataTypes/IFXCoreList.cpp
-	RTL/Kernel/DataTypes/IFXFastAllocator.cpp
-	RTL/Kernel/DataTypes/IFXListNode.cpp
-	RTL/Kernel/DataTypes/IFXMatrix4x4.cpp
-	RTL/Kernel/DataTypes/IFXQuaternion.cpp
-	RTL/Kernel/DataTypes/IFXString.cpp
-	RTL/Kernel/DataTypes/IFXUnitAllocator.cpp
-	RTL/Kernel/DataTypes/IFXVector3.cpp
-	RTL/Kernel/DataTypes/IFXVector4.cpp
-	RTL/Dependencies/WildCards/wcmatch.cpp
-	RTL/Kernel/Common/IFXDebug.cpp
-	)
-IF(WIN32)
-  SET( IMPORT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Win32/IFXImporting )
-  ADD_LIBRARY( IFXImporting  SHARED ${IFXImporting_SRCS} ${IFXImporting_HDRS} ${IMPORT_DIR}/IFXImporting.rc ${IMPORT_DIR}/IFXResource.h ${IMPORT_DIR}/IFXImporting.def )
-  TARGET_LINK_LIBRARIES( IFXImporting IFXCore ws2_32 )
-ENDIF(WIN32)
-IF(APPLE)
-  ADD_LIBRARY( IFXImporting  MODULE ${IFXImporting_SRCS} ${IFXImporting_HDRS} )
-  set_target_properties( IFXImporting  PROPERTIES
-	LINK_FLAGS "${MY_LINK_FLAGS} -exported_symbols_list ${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Mac32/IFXImporting/IFXImporting.def   -undefined dynamic_lookup" )
-ENDIF(APPLE)
-IF(UNIX AND NOT APPLE)
-  ADD_LIBRARY( IFXImporting  MODULE ${IFXImporting_SRCS} ${IFXImporting_HDRS} )
-  set_target_properties( IFXImporting  PROPERTIES
-	LINK_FLAGS "-Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Lin32/IFXImporting/IFXImporting.list" )
-ENDIF(UNIX AND NOT APPLE)
-install(
-	TARGETS IFXImporting
-	RUNTIME DESTINATION ${BIN_DESTINATION}
-	ARCHIVE DESTINATION ${LIB_DESTINATION}
-	LIBRARY DESTINATION ${PLUGIN_DESTINATION}
-)
+#INCLUDE_DIRECTORIES( RTL/Component/Include RTL/Kernel/Include RTL/Platform/Include
+#	RTL/Component/Importing
+#	RTL/Dependencies/WildCards )
+#SET( IFXImporting_HDRS
+#	${Component_HDRS}
+#	${Kernel_HDRS}
+#	${Platform_HDRS}
+#	RTL/Component/Importing/CIFXAnimationModifierDecoder.h
+#	RTL/Component/Importing/CIFXAuthorCLODDecoder.h
+#	RTL/Component/Importing/CIFXBlockReaderX.h
+#	RTL/Component/Importing/CIFXBoneWeightsModifierDecoder.h
+#	RTL/Component/Importing/CIFXBTTHash.h
+#	RTL/Component/Importing/CIFXCLODModifierDecoder.h
+#	RTL/Component/Importing/CIFXDecoderChainX.h
+#	RTL/Component/Importing/CIFXDummyModifierDecoder.h
+#	RTL/Component/Importing/CIFXGlyphModifierDecoder.h
+#	RTL/Component/Importing/CIFXGroupDecoder.h
+#	RTL/Component/Importing/CIFXInternetReadBufferX.h
+#	RTL/Component/Importing/CIFXLightDecoder.h
+#	RTL/Component/Importing/CIFXLightResourceDecoder.h
+#	RTL/Component/Importing/CIFXLineSetDecoder.h
+#	RTL/Component/Importing/CIFXLoadManager.h
+#	RTL/Component/Importing/CIFXMaterialDecoder.h
+#	RTL/Component/Importing/CIFXModelDecoder.h
+#	RTL/Component/Importing/CIFXMotionDecoder.h
+#	RTL/Component/Importing/CIFXNodeDecoder.h
+#	RTL/Component/Importing/CIFXPointSetDecoder.h
+#	RTL/Component/Importing/CIFXShaderLitTextureDecoder.h
+#	RTL/Component/Importing/CIFXShadingModifierDecoder.h
+#	RTL/Component/Importing/CIFXStdioReadBufferX.h
+#	RTL/Component/Importing/CIFXSubdivisionModifierDecoder.h
+#	RTL/Component/Importing/CIFXTextureDecoder.h
+#	RTL/Component/Importing/CIFXViewDecoder.h
+#	RTL/Component/Importing/CIFXViewResourceDecoder.h
+#	RTL/Component/Importing/IFXInternetConnectionX.h
+#	RTL/Component/Importing/IFXInternetSessionX.h
+#	RTL/Component/Importing/IFXSocketStream.h
+#	RTL/Dependencies/WildCards/wcmatch.h
+#)
+#SET( IFXImporting_SRCS
+#	RTL/Platform/${U3D_PLATFORM}/IFXImporting/IFXImportingDllMain.cpp
+#	RTL/Component/Importing/CIFXAnimationModifierDecoder.cpp
+#	RTL/Component/Importing/CIFXAuthorCLODDecoder.cpp
+#	RTL/Component/Importing/CIFXAuthorCLODDecoder_P.cpp
+#	RTL/Component/Importing/CIFXAuthorCLODDecoder_S.cpp
+#	RTL/Component/Importing/CIFXBlockReaderX.cpp
+#	RTL/Component/Importing/CIFXBoneWeightsModifierDecoder.cpp
+#	RTL/Component/Importing/CIFXBTTHash.cpp
+#	RTL/Component/Importing/CIFXCLODModifierDecoder.cpp
+#	RTL/Component/Importing/CIFXDecoderChainX.cpp
+#	RTL/Component/Importing/CIFXDummyModifierDecoder.cpp
+#	RTL/Component/Importing/CIFXGlyphModifierDecoder.cpp
+#	RTL/Component/Importing/CIFXGroupDecoder.cpp
+#	RTL/Component/Importing/CIFXInternetReadBufferX.cpp
+#	RTL/Component/Importing/CIFXLightDecoder.cpp
+#	RTL/Component/Importing/CIFXLightResourceDecoder.cpp
+#	RTL/Component/Importing/CIFXLineSetDecoder.cpp
+#	RTL/Component/Importing/CIFXLoadManager.cpp
+#	RTL/Component/Importing/CIFXMaterialDecoder.cpp
+#	RTL/Component/Importing/CIFXModelDecoder.cpp
+#	RTL/Component/Importing/CIFXMotionDecoder.cpp
+#	RTL/Component/Importing/CIFXNodeDecoder.cpp
+#	RTL/Component/Importing/CIFXPointSetDecoder.cpp
+#	RTL/Component/Importing/CIFXShaderLitTextureDecoder.cpp
+#	RTL/Component/Importing/CIFXShadingModifierDecoder.cpp
+#	RTL/Component/Importing/CIFXStdioReadBufferX.cpp
+#	RTL/Component/Importing/CIFXSubdivisionModifierDecoder.cpp
+#	RTL/Component/Importing/CIFXTextureDecoder.cpp
+#	RTL/Component/Importing/CIFXViewDecoder.cpp
+#	RTL/Component/Importing/CIFXViewResourceDecoder.cpp
+#	RTL/Component/Importing/IFXImporting.cpp
+#	RTL/Component/Importing/IFXImportingGuids.cpp
+#	RTL/Component/Importing/IFXInternetConnectionX.cpp
+#	RTL/Component/Importing/IFXInternetSessionX.cpp
+#	RTL/Component/Importing/IFXModifierBaseDecoder.cpp
+#	RTL/Component/Importing/IFXSocketStream.cpp
+#	RTL/IFXCorePluginStatic/IFXCorePluginStatic.cpp
+#	RTL/Platform/${U3D_PLATFORM}/Common/IFXOSUtilities.cpp
+#	RTL/Platform/${U3D_PLATFORM}/Common/IFXOSLoader.cpp
+#	RTL/Platform/${U3D_PLATFORM}/Common/IFXOSSocket.cpp
+#	RTL/Kernel/DataTypes/IFXCoreArray.cpp
+#	RTL/Kernel/DataTypes/IFXCoreList.cpp
+#	RTL/Kernel/DataTypes/IFXFastAllocator.cpp
+#	RTL/Kernel/DataTypes/IFXListNode.cpp
+#	RTL/Kernel/DataTypes/IFXMatrix4x4.cpp
+#	RTL/Kernel/DataTypes/IFXQuaternion.cpp
+#	RTL/Kernel/DataTypes/IFXString.cpp
+#	RTL/Kernel/DataTypes/IFXUnitAllocator.cpp
+#	RTL/Kernel/DataTypes/IFXVector3.cpp
+#	RTL/Kernel/DataTypes/IFXVector4.cpp
+#	RTL/Dependencies/WildCards/wcmatch.cpp
+#	RTL/Kernel/Common/IFXDebug.cpp
+#	)
+#IF(WIN32)
+#  SET( IMPORT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Win32/IFXImporting )
+#  ADD_LIBRARY( IFXImporting  SHARED ${IFXImporting_SRCS} ${IFXImporting_HDRS} ${IMPORT_DIR}/IFXImporting.rc ${IMPORT_DIR}/IFXResource.h ${IMPORT_DIR}/IFXImporting.def )
+#  TARGET_LINK_LIBRARIES( IFXImporting IFXCore ws2_32 )
+#ENDIF(WIN32)
+#IF(APPLE)
+#  ADD_LIBRARY( IFXImporting  MODULE ${IFXImporting_SRCS} ${IFXImporting_HDRS} )
+#  set_target_properties( IFXImporting  PROPERTIES
+#	LINK_FLAGS "${MY_LINK_FLAGS} -exported_symbols_list ${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Mac32/IFXImporting/IFXImporting.def   -undefined dynamic_lookup" )
+#ENDIF(APPLE)
+#IF(UNIX AND NOT APPLE)
+#  ADD_LIBRARY( IFXImporting  MODULE ${IFXImporting_SRCS} ${IFXImporting_HDRS} )
+#  set_target_properties( IFXImporting  PROPERTIES
+#	LINK_FLAGS "-Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Lin32/IFXImporting/IFXImporting.list" )
+#ENDIF(UNIX AND NOT APPLE)
+#install(
+#	TARGETS IFXImporting
+#	RUNTIME DESTINATION ${BIN_DESTINATION}
+#	ARCHIVE DESTINATION ${LIB_DESTINATION}
+#	LIBRARY DESTINATION ${PLUGIN_DESTINATION}
+#)
 
 INCLUDE_DIRECTORIES( RTL/Component/Include RTL/Kernel/Include RTL/Platform/Include
 	RTL/Component/ModifierChain
@@ -1625,167 +1626,167 @@ install(
 	LIBRARY DESTINATION ${LIB_DESTINATION}
 )
 
-INCLUDE_DIRECTORIES( RTL/Component/Include RTL/Kernel/Include RTL/Platform/Include
-	RTL/Dependencies/WildCards
-	RTL/Component/Base
-	IDTF
-	IDTF/Include
-	IDTF/Common 
-        libIDTF )
-SET( libIDTF_SRCS
-	libIDTF/SceneConverterLib.cpp
-	libIDTF/Writer.cpp
-	libIDTF/IFXOSLoader.cpp
-	libIDTF/IFXOSUtilities.cpp
-	IDTF/PointSetConverter.cpp
-	IDTF/MetaDataConverter.cpp
-	IDTF/ResourceConverter.cpp
-	IDTF/TextureConverter.cpp
-	IDTF/File.cpp
-	IDTF/LineSetConverter.cpp
-	IDTF/ModelConverter.cpp
-	IDTF/NodeConverter.cpp
-	IDTF/MeshConverter.cpp
-	IDTF/FileReferenceConverter.cpp
-	IDTF/ModifierConverter.cpp
-	IDTF/Helpers/MiscUtilities.cpp
-	IDTF/Helpers/TGAImage.cpp
-	IDTF/Helpers/ModifierUtilities.cpp
-	IDTF/Helpers/SceneUtilities.cpp
-	IDTF/Helpers/DebugInfo.cpp
-	IDTF/Helpers/Guids.cpp
-	IDTF/Common/GlyphModifier.cpp
-	IDTF/Common/ModelResource.cpp
-	IDTF/Common/ModifierList.cpp
-	IDTF/Common/NodeList.cpp
-	IDTF/Common/FileReference.cpp
-	IDTF/Common/ResourceList.cpp
-	IDTF/Common/SceneResources.cpp
-	IDTF/Common/ModelResourceList.cpp
-	IDTF/Common/MetaDataList.cpp
-	IDTF/Common/ParentList.cpp
-	IDTF/Common/GlyphCommandList.cpp
-	RTL/Dependencies/WildCards/wcmatch.cpp
-	RTL/Component/Base/IFXCoincidentVertexMap.cpp
-	RTL/Component/Base/IFXFatCornerIter.cpp
-	RTL/Component/Base/IFXCornerIter.cpp
-	RTL/Component/Base/IFXTransform.cpp
-	RTL/Component/Base/IFXVertexMap.cpp
-	RTL/Component/Base/IFXEuler.cpp
-	RTL/Component/Base/IFXVectorHasher.cpp
-	RTL/Component/Base/IFXVertexMapGroup.cpp
-	RTL/Kernel/DataTypes/IFXCoreArray.cpp
-	RTL/Kernel/DataTypes/IFXFastAllocator.cpp
-	RTL/Kernel/DataTypes/IFXMatrix4x4.cpp
-	RTL/Kernel/DataTypes/IFXString.cpp
-	RTL/Kernel/DataTypes/IFXVector3.cpp
-	RTL/Kernel/DataTypes/IFXCoreList.cpp
-	RTL/Kernel/DataTypes/IFXListNode.cpp
-	RTL/Kernel/DataTypes/IFXQuaternion.cpp
-	RTL/Kernel/DataTypes/IFXUnitAllocator.cpp
-	RTL/Kernel/DataTypes/IFXVector4.cpp
-	RTL/Component/Common/IFXDids.cpp
-	RTL/Kernel/Common/IFXDebug.cpp
-	RTL/IFXCoreStatic/IFXCoreStatic.cpp
-)
-SET( libIDTF_HDRS
-	${Component_HDRS}
-	${Kernel_HDRS}
-	${Platform_HDRS}
-	libIDTF/SceneConverterLib.h
-	libIDTF/Writer.h
-	IDTF/DefaultSettings.h
-	IDTF/File.h
-	IDTF/FileReferenceConverter.h
-	IDTF/IConverter.h
-	IDTF/LineSetConverter.h
-	IDTF/MeshConverter.h
-	IDTF/MetaDataConverter.h
-	IDTF/ModelConverter.h
-	IDTF/ModifierConverter.h
-	IDTF/NodeConverter.h
-	IDTF/PointSetConverter.h
-	IDTF/ResourceConverter.h
-	IDTF/TextureConverter.h
-	IDTF/Include/ConverterOptions.h
-	IDTF/Include/ConverterResult.h
-	IDTF/Include/DebugInfo.h
-	IDTF/Include/SceneUtilities.h
-	IDTF/Include/TGAImage.h
-	IDTF/Include/U3DHeaders.h
-	IDTF/Common/AnimationModifier.h
-	IDTF/Common/BoneWeightModifier.h
-	IDTF/Common/CLODModifier.h
-	IDTF/Common/Color.h
-	IDTF/Common/FileReference.h
-	IDTF/Common/GlyphCommandList.h
-	IDTF/Common/GlyphCommands.h
-	IDTF/Common/GlyphModifier.h
-	IDTF/Common/INode.h
-	IDTF/Common/Int2.h
-	IDTF/Common/Int3.h
-	IDTF/Common/IResource.h
-	IDTF/Common/LightNode.h
-	IDTF/Common/LightResource.h
-	IDTF/Common/LightResourceList.h
-	IDTF/Common/LineSetResource.h
-	IDTF/Common/MaterialResource.h
-	IDTF/Common/MaterialResourceList.h
-	IDTF/Common/MeshResource.h
-	IDTF/Common/MetaDataList.h
-	IDTF/Common/ModelNode.h
-	IDTF/Common/ModelResource.h
-	IDTF/Common/ModelResourceList.h
-	IDTF/Common/ModelSkeleton.h
-	IDTF/Common/Modifier.h
-	IDTF/Common/ModifierList.h
-	IDTF/Common/MotionResource.h
-	IDTF/Common/MotionResourceList.h
-	IDTF/Common/Node.h
-	IDTF/Common/NodeList.h
-	IDTF/Common/ParentData.h
-	IDTF/Common/ParentList.h
-	IDTF/Common/Point.h
-	IDTF/Common/PointSetResource.h
-	IDTF/Common/Quat.h
-	IDTF/Common/Resource.h
-	IDTF/Common/ResourceList.h
-	IDTF/Common/SceneData.h
-	IDTF/Common/SceneResources.h
-	IDTF/Common/ShaderResource.h
-	IDTF/Common/ShaderResourceList.h
-	IDTF/Common/ShadingDescription.h
-	IDTF/Common/ShadingDescriptionList.h
-	IDTF/Common/ShadingModifier.h
-	IDTF/Common/SubdivisionModifier.h
-	IDTF/Common/TextureResource.h
-	IDTF/Common/TextureResourceList.h
-	IDTF/Common/Tokens.h
-	IDTF/Common/UrlList.h
-	IDTF/Common/ViewNodeData.h
-	IDTF/Common/ViewNode.h
-	IDTF/Common/ViewResource.h
-	IDTF/Common/ViewResourceList.h
-	RTL/Dependencies/WildCards/wcmatch.h
-	RTL/Component/Base/IFXVectorHasher.h
-)
+#INCLUDE_DIRECTORIES( RTL/Component/Include RTL/Kernel/Include RTL/Platform/Include
+#	RTL/Dependencies/WildCards
+#	RTL/Component/Base
+#	IDTF
+#	IDTF/Include
+#	IDTF/Common
+#        libIDTF )
+#SET( libIDTF_SRCS
+#	libIDTF/SceneConverterLib.cpp
+#	libIDTF/Writer.cpp
+#	libIDTF/IFXOSLoader.cpp
+#	libIDTF/IFXOSUtilities.cpp
+#	IDTF/PointSetConverter.cpp
+#	IDTF/MetaDataConverter.cpp
+#	IDTF/ResourceConverter.cpp
+#	IDTF/TextureConverter.cpp
+#	IDTF/File.cpp
+#	IDTF/LineSetConverter.cpp
+#	IDTF/ModelConverter.cpp
+#	IDTF/NodeConverter.cpp
+#	IDTF/MeshConverter.cpp
+#	IDTF/FileReferenceConverter.cpp
+#	IDTF/ModifierConverter.cpp
+#	IDTF/Helpers/MiscUtilities.cpp
+#	IDTF/Helpers/TGAImage.cpp
+#	IDTF/Helpers/ModifierUtilities.cpp
+#	IDTF/Helpers/SceneUtilities.cpp
+#	IDTF/Helpers/DebugInfo.cpp
+#	IDTF/Helpers/Guids.cpp
+#	IDTF/Common/GlyphModifier.cpp
+#	IDTF/Common/ModelResource.cpp
+#	IDTF/Common/ModifierList.cpp
+#	IDTF/Common/NodeList.cpp
+#	IDTF/Common/FileReference.cpp
+#	IDTF/Common/ResourceList.cpp
+#	IDTF/Common/SceneResources.cpp
+#	IDTF/Common/ModelResourceList.cpp
+#	IDTF/Common/MetaDataList.cpp
+#	IDTF/Common/ParentList.cpp
+#	IDTF/Common/GlyphCommandList.cpp
+#	RTL/Dependencies/WildCards/wcmatch.cpp
+#	RTL/Component/Base/IFXCoincidentVertexMap.cpp
+#	RTL/Component/Base/IFXFatCornerIter.cpp
+#	RTL/Component/Base/IFXCornerIter.cpp
+#	RTL/Component/Base/IFXTransform.cpp
+#	RTL/Component/Base/IFXVertexMap.cpp
+#	RTL/Component/Base/IFXEuler.cpp
+#	RTL/Component/Base/IFXVectorHasher.cpp
+#	RTL/Component/Base/IFXVertexMapGroup.cpp
+#	RTL/Kernel/DataTypes/IFXCoreArray.cpp
+#	RTL/Kernel/DataTypes/IFXFastAllocator.cpp
+#	RTL/Kernel/DataTypes/IFXMatrix4x4.cpp
+#	RTL/Kernel/DataTypes/IFXString.cpp
+#	RTL/Kernel/DataTypes/IFXVector3.cpp
+#	RTL/Kernel/DataTypes/IFXCoreList.cpp
+#	RTL/Kernel/DataTypes/IFXListNode.cpp
+#	RTL/Kernel/DataTypes/IFXQuaternion.cpp
+#	RTL/Kernel/DataTypes/IFXUnitAllocator.cpp
+#	RTL/Kernel/DataTypes/IFXVector4.cpp
+#	RTL/Component/Common/IFXDids.cpp
+#	RTL/Kernel/Common/IFXDebug.cpp
+#	RTL/IFXCoreStatic/IFXCoreStatic.cpp
+#)
+#SET( libIDTF_HDRS
+#	${Component_HDRS}
+#	${Kernel_HDRS}
+#	${Platform_HDRS}
+#	libIDTF/SceneConverterLib.h
+#	libIDTF/Writer.h
+#	IDTF/DefaultSettings.h
+#	IDTF/File.h
+#	IDTF/FileReferenceConverter.h
+#	IDTF/IConverter.h
+#	IDTF/LineSetConverter.h
+#	IDTF/MeshConverter.h
+#	IDTF/MetaDataConverter.h
+#	IDTF/ModelConverter.h
+#	IDTF/ModifierConverter.h
+#	IDTF/NodeConverter.h
+#	IDTF/PointSetConverter.h
+#	IDTF/ResourceConverter.h
+#	IDTF/TextureConverter.h
+#	IDTF/Include/ConverterOptions.h
+#	IDTF/Include/ConverterResult.h
+#	IDTF/Include/DebugInfo.h
+#	IDTF/Include/SceneUtilities.h
+#	IDTF/Include/TGAImage.h
+#	IDTF/Include/U3DHeaders.h
+#	IDTF/Common/AnimationModifier.h
+#	IDTF/Common/BoneWeightModifier.h
+#	IDTF/Common/CLODModifier.h
+#	IDTF/Common/Color.h
+#	IDTF/Common/FileReference.h
+#	IDTF/Common/GlyphCommandList.h
+#	IDTF/Common/GlyphCommands.h
+#	IDTF/Common/GlyphModifier.h
+#	IDTF/Common/INode.h
+#	IDTF/Common/Int2.h
+#	IDTF/Common/Int3.h
+#	IDTF/Common/IResource.h
+#	IDTF/Common/LightNode.h
+#	IDTF/Common/LightResource.h
+#	IDTF/Common/LightResourceList.h
+#	IDTF/Common/LineSetResource.h
+#	IDTF/Common/MaterialResource.h
+#	IDTF/Common/MaterialResourceList.h
+#	IDTF/Common/MeshResource.h
+#	IDTF/Common/MetaDataList.h
+#	IDTF/Common/ModelNode.h
+#	IDTF/Common/ModelResource.h
+#	IDTF/Common/ModelResourceList.h
+#	IDTF/Common/ModelSkeleton.h
+#	IDTF/Common/Modifier.h
+#	IDTF/Common/ModifierList.h
+#	IDTF/Common/MotionResource.h
+#	IDTF/Common/MotionResourceList.h
+#	IDTF/Common/Node.h
+#	IDTF/Common/NodeList.h
+#	IDTF/Common/ParentData.h
+#	IDTF/Common/ParentList.h
+#	IDTF/Common/Point.h
+#	IDTF/Common/PointSetResource.h
+#	IDTF/Common/Quat.h
+#	IDTF/Common/Resource.h
+#	IDTF/Common/ResourceList.h
+#	IDTF/Common/SceneData.h
+#	IDTF/Common/SceneResources.h
+#	IDTF/Common/ShaderResource.h
+#	IDTF/Common/ShaderResourceList.h
+#	IDTF/Common/ShadingDescription.h
+#	IDTF/Common/ShadingDescriptionList.h
+#	IDTF/Common/ShadingModifier.h
+#	IDTF/Common/SubdivisionModifier.h
+#	IDTF/Common/TextureResource.h
+#	IDTF/Common/TextureResourceList.h
+#	IDTF/Common/Tokens.h
+#	IDTF/Common/UrlList.h
+#	IDTF/Common/ViewNodeData.h
+#	IDTF/Common/ViewNode.h
+#	IDTF/Common/ViewResource.h
+#	IDTF/Common/ViewResourceList.h
+#	RTL/Dependencies/WildCards/wcmatch.h
+#	RTL/Component/Base/IFXVectorHasher.h
+#)
 
-SET_PROPERTY( SOURCE
-	libIDTF/IFXOSLoader.cpp
-	PROPERTY COMPILE_DEFINITIONS U3DPluginsPath="Plugins" U3DCorePath="." )
-if(MSVC)
-ADD_LIBRARY( IDTF STATIC ${libIDTF_SRCS} ${libIDTF_HDRS} )
-else(MSVC)
-ADD_LIBRARY( IDTF SHARED ${libIDTF_SRCS} ${libIDTF_HDRS} )
-endif(MSVC)
-SET_PROPERTY(
-	TARGET IDTF
-	PROPERTY COMPILE_DEFINITIONS LIBIDTF )
-install(
-	TARGETS IDTF
-	ARCHIVE DESTINATION ${LIB_DESTINATION}
-	LIBRARY DESTINATION ${LIB_DESTINATION}
-)
+#SET_PROPERTY( SOURCE
+#	libIDTF/IFXOSLoader.cpp
+#	PROPERTY COMPILE_DEFINITIONS U3DPluginsPath="Plugins" U3DCorePath="." )
+#if(MSVC)
+#ADD_LIBRARY( IDTF STATIC ${libIDTF_SRCS} ${libIDTF_HDRS} )
+#else(MSVC)
+#ADD_LIBRARY( IDTF SHARED ${libIDTF_SRCS} ${libIDTF_HDRS} )
+#endif(MSVC)
+#SET_PROPERTY(
+#	TARGET IDTF
+#	PROPERTY COMPILE_DEFINITIONS LIBIDTF )
+#install(
+#	TARGETS IDTF
+#	ARCHIVE DESTINATION ${LIB_DESTINATION}
+#	LIBRARY DESTINATION ${LIB_DESTINATION}
+#)
 
 ADD_EXECUTABLE( Test test/main.cpp ${IDTFConverter_HDRS} )
 target_link_libraries( Test IDTFConverter IFXCoreStatic ${CMAKE_DL_LIBS} )
