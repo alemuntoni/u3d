@@ -16,9 +16,7 @@ cmake_install.cmake
 cmake_uninstall.cmake
 
 # binaries
-HelloU3DWorld
-IDTFConverter
-IDTFGen
+IDTFTest
 
 # others
 jconfig.h

@@ -2,7 +2,7 @@ TEMPLATE = app
 CONFIG += c++11
 CONFIG -= app_bundle
 CONFIG -= qt
-TARGET = IFXTest
+TARGET = IDTFTest
 
 INCLUDEPATH += \
 	../src/IDTF/
