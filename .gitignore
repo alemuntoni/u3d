@@ -19,8 +19,6 @@ cmake_uninstall.cmake
 IDTFTest
 
 # others
-jconfig.h
-zconf.h
 .idea
 
 # OS generated files #
