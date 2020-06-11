@@ -1608,9 +1608,9 @@ IF(WIN32)
   ADD_LIBRARY( IDTFConverter SHARED ${IDTFConverter_SRCS} ${IDTFConverter_HDRS} IDTF/IDTFConverter.rc IDTF/IFXResource.h)
 ENDIF(WIN32)
 IF(APPLE)
-  ADD_LIBRARY( IDTFConverter MODULE ${IDTFConverter_SRCS} ${IDTFConverter_HDRS})
-  set_target_properties( IDTFConverter  PROPERTIES
-	LINK_FLAGS "${MY_LINK_FLAGS} -exported_symbols_list /dev/null" )
+  ADD_LIBRARY( IDTFConverter ${IDTFConverter_SRCS} ${IDTFConverter_HDRS})
+#  set_target_properties( IDTFConverter  PROPERTIES
+#	LINK_FLAGS "${MY_LINK_FLAGS} -exported_symbols_list /dev/null" )
 ENDIF(APPLE)
 IF(UNIX AND NOT APPLE)
   ADD_LIBRARY( IDTFConverter ${IDTFConverter_SRCS} ${IDTFConverter_HDRS} )
@@ -1788,12 +1788,12 @@ install(
 #	LIBRARY DESTINATION ${LIB_DESTINATION}
 #)
 
-ADD_EXECUTABLE( Test test/main.cpp ${IDTFConverter_HDRS} )
-target_link_libraries( Test IDTFConverter IFXCoreStatic ${CMAKE_DL_LIBS} )
-add_dependencies( Test  IDTFConverter IFXCoreStatic )
+ADD_EXECUTABLE( IDTFTest IDTFTest/main.cpp ${IDTFConverter_HDRS} )
+target_link_libraries( IDTFTest IDTFConverter IFXCoreStatic ${CMAKE_DL_LIBS} )
+add_dependencies( IDTFTest  IDTFConverter IFXCoreStatic )
 
 install(
-	TARGETS Test
+	TARGETS IDTFTest
 	DESTINATION ${BIN_DESTINATION}
 )
 

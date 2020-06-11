@@ -8,7 +8,7 @@ INCLUDEPATH += \
 	../src/IDTF/
 
 SOURCES += \
-	../src/test/main.cpp
+        ../src/IDTFTest/main.cpp
 
 linux {
 #substitute with the dir where libIDTFConverter has been compiled

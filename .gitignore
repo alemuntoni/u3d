@@ -15,9 +15,6 @@ Makefile
 cmake_install.cmake
 cmake_uninstall.cmake
 
-# binaries
-IDTFTest
-
 # others
 .idea
 
