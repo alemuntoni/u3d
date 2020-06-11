@@ -1,5 +1,5 @@
 TEMPLATE = lib
-CONFIG += staticlib
+CONFIG += dll
 TARGET = IFXExporting
 DESTDIR = ../
 
@@ -78,6 +78,9 @@ SOURCES += \
 	$${BASE_SRC_RTL}/Dependencies/WildCards/wcmatch.cpp \
 	$${BASE_SRC_RTL}/Kernel/Common/IFXDebug.cpp
 
+linux  {
+	#QMAKE_LFLAGS += -Wl --version-script=$${BASE_SRC_RTL}/Platform/Lin32/IFXExporting/IFXExporting.list
+}
 
 #IF(WIN32)
 #  SET( EXPORT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Win32/IFXExporting )

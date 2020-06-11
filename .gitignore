@@ -6,6 +6,7 @@
 *.o
 *.obj
 *.exp
+*.user
 
 # cmake files
 CMakeCache.txt
