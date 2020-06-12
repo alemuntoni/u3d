@@ -32,6 +32,7 @@
 //***************************************************************************
 
 #include <wchar.h>
+#include <string>
 #ifdef WIN32
 #include <windows.h>
 #endif
@@ -69,7 +70,11 @@ bool IDTFToU3d(
 		int positionQuality)
 {
 	const char* argv[] = {
+	#ifndef WIN32
 		"IDTFConverter",
+	#else
+		"IDTFConverter.exe",
+	#endif
 		"-en",
 		"1",
 		"-rzf",
@@ -84,23 +89,22 @@ bool IDTFToU3d(
 	int argc = 11;
 
 	IFXRESULT result = IFX_OK;
-#ifdef __MINGW32__
-	wchar_t **argw = NULL;
-	int argc=0;
-#endif
-#ifndef WIN32
+//#ifdef WIN32
+//	wchar_t **argw = NULL;
+//#endif
+//#ifndef WIN32
 	wchar_t **argw = NULL;
 	int i;
-#endif
+//#endif
 
 	result = IFXSetDefaultLocale();
 	IFXTRACE_GENERIC(L"[Converter] IFXSetDefaultLocale %i\n", result);
 
 	if( IFXSUCCESS(result) ) {
-#ifdef __MINGW32__
-		argw = CommandLineToArgvW(GetCommandLineW(), &argc);
-#endif
-#ifndef WIN32
+//#ifdef WIN32
+//		argw = CommandLineToArgvW(GetCommandLineW(), &argc);
+//#endif
+//#ifndef WIN32
 		argw = (wchar_t**)malloc(argc*sizeof(wchar_t*));
 		if (argw == NULL)
 			result = IFX_E_OUT_OF_MEMORY;
@@ -117,7 +121,7 @@ bool IDTFToU3d(
 				}
 			}
 		}
-#endif
+//#endif
 	}
 
 

@@ -8,8 +8,8 @@
 #ifndef ZCONF_H
 #define ZCONF_H
 
-#ifdef ZLIB_WITH_Z_PREFIX
-define Z_PREFIX
+#ifdef WIN32
+#define Z_PREFIX
 #else
 #define Z_HAVE_UNISTD_H
 #endif

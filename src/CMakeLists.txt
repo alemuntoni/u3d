@@ -1474,7 +1474,7 @@ SET( IDTFConverter_SRCS
 	IDTF/ResourceListParser.cpp
 	IDTF/File.cpp
 	IDTF/LineSetConverter.cpp
-	IDTF/ConverterDriver.cpp
+	#IDTF/ConverterDriver.cpp
 	IDTF/ModelConverter.cpp
 	IDTF/TextureParser.cpp
 	IDTF/NodeConverter.cpp
@@ -1605,7 +1605,7 @@ SET( IDTFConverter_HDRS
 )
 IF(WIN32)
   SET( CORE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Win32/IDTFConverter )
-  ADD_LIBRARY( IDTFConverter SHARED ${IDTFConverter_SRCS} ${IDTFConverter_HDRS} IDTF/IDTFConverter.rc IDTF/IFXResource.h)
+  ADD_LIBRARY( IDTFConverter STATIC ${IDTFConverter_SRCS} ${IDTFConverter_HDRS} IDTF/IDTFConverter.rc IDTF/IFXResource.h)
 ENDIF(WIN32)
 IF(APPLE)
   ADD_LIBRARY( IDTFConverter ${IDTFConverter_SRCS} ${IDTFConverter_HDRS})
