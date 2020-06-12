@@ -3,13 +3,14 @@ CONFIG += dll
 TARGET = IFXExporting
 DESTDIR = ../
 
-BASE_SRC_IDTF = ../src/IDTF
-BASE_SRC_RTL = ../src/RTL
+BASE_SRC_IDTF = $${PWD}/../src/IDTF
+BASE_SRC_RTL = $${PWD}/../src/RTL
 
 linux{
 	U3D_PLATFORM=Lin32
 }
 macx {
+    DEFINES+=MAC32
 	U3D_PLATFORM=Mac32
 }
 
@@ -80,6 +81,12 @@ SOURCES += \
 
 linux  {
 	#QMAKE_LFLAGS += -Wl --version-script=$${BASE_SRC_RTL}/Platform/Lin32/IFXExporting/IFXExporting.list
+}
+macx {
+    QMAKE_LFLAGS += -exported_symbols_list $${BASE_SRC_RTL}/Platform/Mac32/IFXExporting/IFXExporting.def   -undefined dynamic_lookup
+	QMAKE_LFLAGS_PLUGIN -= -dynamiclib
+	QMAKE_LFLAGS_PLUGIN += -bundle
+	QMAKE_EXTENSION_SHLIB = so
 }
 
 #IF(WIN32)

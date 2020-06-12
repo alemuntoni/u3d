@@ -3,8 +3,8 @@ CONFIG += staticlib
 TARGET = IDTFConverter
 DESTDIR = ../
 
-BASE_SRC_IDTF = ../src/IDTF
-BASE_SRC_RTL = ../src/RTL
+BASE_SRC_IDTF = $${PWD}/../src/IDTF
+BASE_SRC_RTL = $${PWD}/../src/RTL
 
 INCLUDEPATH += \
 	$${BASE_SRC_RTL}/Component/Include \
@@ -157,3 +157,7 @@ SOURCES += \
 	$${BASE_SRC_IDTF}/Common/MetaDataList.cpp \
 	$${BASE_SRC_IDTF}/Common/ParentList.cpp \
 	$${BASE_SRC_IDTF}/Common/GlyphCommandList.cpp
+
+macx {
+    QMAKE_LFLAGS += -exported_symbols_list  -undefined dynamic_lookup
+}

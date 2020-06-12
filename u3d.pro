@@ -1,4 +1,5 @@
 TEMPLATE = subdirs
+#CONFIG += ORDERED
 
 SUBDIRS = \
 	IFXCoreStatic \

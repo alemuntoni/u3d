@@ -3,13 +3,14 @@ CONFIG += staticlib
 TARGET = IFXCoreStatic
 DESTDIR = ../
 
-BASE_SRC_IDTF = ../src/IDTF
-BASE_SRC_RTL = ../src/RTL
+BASE_SRC_IDTF = $${PWD}/../src/IDTF
+BASE_SRC_RTL = $${PWD}/../src/RTL
 
 linux{
 	U3D_PLATFORM=Lin32
 }
 macx {
+    DEFINES+=MAC32
 	U3D_PLATFORM=Mac32
 }
 

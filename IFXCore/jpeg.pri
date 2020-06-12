@@ -25,7 +25,12 @@ HEADERS += \
 
 #additional source
 # JPEG_systemdependent_SRCS
-# ${JPEG_SOURCE_DIR}/jmemnobs.c
+# $${JPEG_SOURCE_DIR}/jmemnobs.c
+
+macx {
+    SOURCES += \
+	    $${JPEG_SOURCE_DIR}/jmemnobs.c
+}
 
 SOURCES += \
 	$${JPEG_SOURCE_DIR}/jaricom.c \
