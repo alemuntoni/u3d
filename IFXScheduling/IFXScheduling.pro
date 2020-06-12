@@ -73,6 +73,9 @@ macx {
 	QMAKE_LFLAGS_PLUGIN += -bundle
 	QMAKE_EXTENSION_SHLIB = so
 }
+win32 {
+    LIBS += winmm.lib user32.lib -L$$DESTDIR/ -lIFXCore
+}
 
 #IF(WIN32)
 #  SET( SCHED_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Win32/IFXScheduling )

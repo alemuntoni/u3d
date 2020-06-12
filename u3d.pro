@@ -17,5 +17,7 @@ IFXScheduling.subdir = IFXScheduling
 IDTFConverter.subdir = IDTFConverter
 IDTFTest.subdir = IDTFTest
 
+IFXExporting.depends = IFXCore
+IFXScheduling.depends = IFXCore
 IDTFConverter.depends = IFXCoreStatic
-test.depends = IDTFConverter
+IDTFTest.depends = IDTFConverter

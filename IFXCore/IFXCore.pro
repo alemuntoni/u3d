@@ -240,6 +240,17 @@ macx {
 	QMAKE_LFLAGS_PLUGIN += -bundle
 	QMAKE_EXTENSION_SHLIB = so
 }
+win32 {
+
+RC_FILE = $${BASE_SRC_RTL}/Platform/Win32/IFXCore/IFXCore.rc
+
+HEADERS += \
+    $${BASE_SRC_RTL}//Platform/Win32/IFXCore/IFXResource.h
+
+DEF_FILE = $${BASE_SRC_RTL}/Platform/Win32/IFXCore/IFXCore.def
+
+LIBS += winmm.lib user32.lib
+}
 
 #IF(WIN32)
 #  SET( CORE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Win32/IFXCore )

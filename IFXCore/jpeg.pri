@@ -27,7 +27,7 @@ HEADERS += \
 # JPEG_systemdependent_SRCS
 # $${JPEG_SOURCE_DIR}/jmemnobs.c
 
-macx {
+macx|win32 {
     SOURCES += \
 	    $${JPEG_SOURCE_DIR}/jmemnobs.c
 }

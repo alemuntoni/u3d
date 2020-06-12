@@ -17,8 +17,10 @@
 
 #endif //__APPLE__
 
-int main(int, char *[])
+int main (int, char *[])
 {
-    bool res = IDTFConverter::IDTFToU3d(INPUT, OUTPUT);
+	bool res = IDTFConverter::IDTFToU3d(INPUT, OUTPUT);
 	return !res;
 }
+
+
