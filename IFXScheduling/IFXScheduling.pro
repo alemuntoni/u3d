@@ -74,6 +74,13 @@ macx {
 	QMAKE_EXTENSION_SHLIB = so
 }
 win32 {
+RC_FILE = $${BASE_SRC_RTL}/Platform/Win32/IFXScheduling/IFXScheduling.rc
+
+HEADERS += \
+$${BASE_SRC_RTL}//Platform/Win32/IFXScheduling/IFXResource.h
+
+DEF_FILE = $${BASE_SRC_RTL}/Platform/Win32/IFXScheduling/IFXScheduling.def
+
     LIBS += winmm.lib user32.lib -L$$DESTDIR/ -lIFXCore
 }
 
