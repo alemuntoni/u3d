@@ -14,100 +14,6 @@ INCLUDEPATH += \
 	$${BASE_SRC_IDTF}/Include/ \
 	$${BASE_SRC_IDTF}/Common/
 
-
-#HEADERS += \
-#	BlockParser.h \
-#	Converter.h \
-#	DefaultSettings.h \
-#	File.h \
-#	FileParser.h \
-#	FileReferenceConverter.h \
-#	FileReferenceParser.h \
-#	FileScanner.h \
-#	IConverter.h \
-#	LineSetConverter.h \
-#	LineSetResourceParser.h \
-#	MaterialParser.h \
-#	MeshConverter.h \
-#	MeshResourceParser.h \
-#	MetaDataConverter.h \
-#	MetaDataParser.h \
-#	ModelConverter.h \
-#	ModelResourceParser.h \
-#	ModifierConverter.h \
-#	ModifierParser.h \
-#	NodeConverter.h \
-#	NodeParser.h \
-#	PointSetConverter.h \
-#	PointSetResourceParser.h \
-#	ResourceConverter.h \
-#	ResourceListParser.h \
-#	SceneConverter.h \
-#	ShaderParser.h \
-#	TextureConverter.h \
-#	TextureParser.h \
-#	UrlListParser.h \
-#	Include/ConverterHelpers.h \
-#	Include/ConverterOptions.h \
-#	Include/ConverterResult.h \
-#	Include/DebugInfo.h \
-#	Include/SceneUtilities.h \
-#	Include/TGAImage.h \
-#	Include/U3DHeaders.h \
-#	Common/AnimationModifier.h \
-#	Common/BoneWeightModifier.h \
-#	Common/CLODModifier.h \
-#	Common/Color.h \
-#	Common/FileReference.h \
-#	Common/GlyphCommandList.h \
-#	Common/GlyphCommands.h \
-#	Common/GlyphModifier.h \
-#	Common/INode.h \
-#	Common/Int2.h \
-#	Common/Int3.h \
-#	Common/IResource.h \
-#	Common/LightNode.h \
-#	Common/LightResource.h \
-#	Common/LightResourceList.h \
-#	Common/LineSetResource.h \
-#	Common/MaterialResource.h \
-#	Common/MaterialResourceList.h \
-#	Common/MeshResource.h \
-#	Common/MetaDataList.h \
-#	Common/ModelNode.h \
-#	Common/ModelResource.h \
-#	Common/ModelResourceList.h \
-#	Common/ModelSkeleton.h \
-#	Common/Modifier.h \
-#	Common/ModifierList.h \
-#	Common/MotionResource.h \
-#	Common/MotionResourceList.h \
-#	Common/Node.h \
-#	Common/NodeList.h \
-#	Common/ParentData.h \
-#	Common/ParentList.h \
-#	Common/Point.h \
-#	Common/PointSetResource.h \
-#	Common/Quat.h \
-#	Common/Resource.h \
-#	Common/ResourceList.h \
-#	Common/SceneData.h \
-#	Common/SceneResources.h \
-#	Common/ShaderResource.h \
-#	Common/ShaderResourceList.h \
-#	Common/ShadingDescription.h \
-#	Common/ShadingDescriptionList.h \
-#	Common/ShadingModifier.h \
-#	Common/SubdivisionModifier.h \
-#	Common/TextureResource.h \
-#	Common/TextureResourceList.h \
-#	Common/Tokens.h \
-#	Common/UrlList.h \
-#	Common/ViewNodeData.h \
-#	Common/ViewNode.h \
-#	Common/ViewResource.h \
-#	Common/ViewResourceList.h
-
 SOURCES += \
 	$${BASE_SRC_IDTF}/Converter.cpp \
 	$${BASE_SRC_IDTF}/FileParser.cpp \
@@ -125,7 +31,6 @@ SOURCES += \
 	$${BASE_SRC_IDTF}/ResourceListParser.cpp \
 	$${BASE_SRC_IDTF}/File.cpp \
 	$${BASE_SRC_IDTF}/LineSetConverter.cpp \
-	#$${BASE_SRC_IDTF}/ConverterDriver.cpp \
 	$${BASE_SRC_IDTF}/ModelConverter.cpp \
 	$${BASE_SRC_IDTF}/TextureParser.cpp \
 	$${BASE_SRC_IDTF}/NodeConverter.cpp \
@@ -159,5 +64,5 @@ SOURCES += \
 	$${BASE_SRC_IDTF}/Common/GlyphCommandList.cpp
 
 macx {
-    QMAKE_LFLAGS += -exported_symbols_list  -undefined dynamic_lookup
+	QMAKE_LFLAGS += -exported_symbols_list  -undefined dynamic_lookup
 }

@@ -10,7 +10,7 @@ linux{
 	U3D_PLATFORM=Lin32
 }
 macx {
-    DEFINES+=MAC32
+	DEFINES+=MAC32
 	U3D_PLATFORM=Mac32
 }
 
@@ -25,47 +25,6 @@ INCLUDEPATH += \
 	$${BASE_SRC_RTL}/Component/Base \
 	$${BASE_SRC_RTL}/Component/Rendering \
 	$${BASE_SRC_RTL}/Dependencies/WildCards
-
-#HEADERS += \
-#	Component/Base/IFXVectorHasher.h \
-#	Component/Rendering/CIFXDeviceBase.h \
-#	Component/Rendering/CIFXDeviceLight.h \
-#	Component/Rendering/CIFXDeviceTexture.h \
-#	Component/Rendering/CIFXDeviceTexUnit.h \
-#	Component/Rendering/CIFXRender.h \
-#	Component/Rendering/CIFXRenderContext.h \
-#	Component/Rendering/CIFXRenderDevice.h \
-#	Component/Rendering/CIFXRenderServices.h \
-#	Component/Rendering/DX7/CIFXDeviceLightDX7.h \
-#	Component/Rendering/DX7/CIFXDeviceTextureDX7.h \
-#	Component/Rendering/DX7/CIFXDeviceTexUnitDX7.h \
-#	Component/Rendering/DX7/CIFXDirectX7.h \
-#	Component/Rendering/DX7/CIFXRenderDeviceDX7.h \
-#	Component/Rendering/DX7/CIFXRenderDX7.h \
-#	Component/Rendering/DX7/IFXRenderPCHDX7.h \
-#	Component/Rendering/DX8/CIFXDeviceLightDX8.h \
-#	Component/Rendering/DX8/CIFXDeviceTextureDX8.h \
-#	Component/Rendering/DX8/CIFXDeviceTexUnitDX8.h \
-#	Component/Rendering/DX8/CIFXDirectX8.h \
-#	Component/Rendering/DX8/CIFXRenderDeviceDX8.h \
-#	Component/Rendering/DX8/CIFXRenderDX8.h \
-#	Component/Rendering/DX8/IFXRenderPCHDX8.h \
-#	Component/Rendering/IFXAAFilter.h \
-#	Component/Rendering/IFXRenderPCH.h \
-#	Component/Rendering/Null/CIFXDeviceLightNULL.h \
-#	Component/Rendering/Null/CIFXDeviceTextureNULL.h \
-#	Component/Rendering/Null/CIFXDeviceTexUnitNULL.h \
-#	Component/Rendering/Null/CIFXRenderDeviceNULL.h \
-#	Component/Rendering/Null/CIFXRenderNULL.h \
-#	Component/Rendering/Null/IFXRenderPCHNULL.h \
-#	Component/Rendering/OpenGL/CIFXDeviceLightOGL.h \
-#	Component/Rendering/OpenGL/CIFXDeviceTextureOGL.h \
-#	Component/Rendering/OpenGL/CIFXDeviceTexUnitOGL.h \
-#	Component/Rendering/OpenGL/CIFXOpenGL.h \
-#	Component/Rendering/OpenGL/CIFXRenderDeviceOGL.h \
-#	Component/Rendering/OpenGL/CIFXRenderOGL.h \
-#	Component/Rendering/OpenGL/IFXRenderPCHOGL.h \
-#	Dependencies/WildCards/wcmatch.h
 
 SOURCES += \
 	$${BASE_SRC_RTL}/IFXCoreStatic/IFXCoreStatic.cpp \

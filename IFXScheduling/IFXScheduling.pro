@@ -64,39 +64,17 @@ SOURCES += \
 	$${BASE_SRC_RTL}/Dependencies/WildCards/wcmatch.cpp \
 	$${BASE_SRC_RTL}/Kernel/Common/IFXDebug.cpp
 
-linux {
-	#QMAKE_LFLAGS += -Wl --version-script=$${BASE_SRC_RTL}/Platform/Lin32/IFXScheduling/IFXScheduling.list
-}
 macx {
     QMAKE_LFLAGS += -exported_symbols_list $${BASE_SRC_RTL}/Platform/Mac32/IFXScheduling/IFXScheduling.def   -undefined dynamic_lookup
 	QMAKE_LFLAGS_PLUGIN -= -dynamiclib
 	QMAKE_LFLAGS_PLUGIN += -bundle
 	QMAKE_EXTENSION_SHLIB = so
 }
+
 win32 {
-RC_FILE = $${BASE_SRC_RTL}/Platform/Win32/IFXScheduling/IFXScheduling.rc
-
-HEADERS += \
-$${BASE_SRC_RTL}//Platform/Win32/IFXScheduling/IFXResource.h
-
-DEF_FILE = $${BASE_SRC_RTL}/Platform/Win32/IFXScheduling/IFXScheduling.def
-
-    LIBS += winmm.lib user32.lib -L$$DESTDIR/ -lIFXCore
+	RC_FILE = $${BASE_SRC_RTL}/Platform/Win32/IFXScheduling/IFXScheduling.rc
+	HEADERS += \
+		$${BASE_SRC_RTL}//Platform/Win32/IFXScheduling/IFXResource.h
+	DEF_FILE = $${BASE_SRC_RTL}/Platform/Win32/IFXScheduling/IFXScheduling.def
+	LIBS += winmm.lib user32.lib -L$$DESTDIR/ -lIFXCore
 }
-
-#IF(WIN32)
-#  SET( SCHED_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Win32/IFXScheduling )
-#  ADD_LIBRARY( IFXScheduling  SHARED ${IFXScheduling_SRCS} ${IFXScheduling_HDRS} ${SCHED_DIR}/IFXScheduling.rc ${SCHED_DIR}/IFXResource.h ${SCHED_DIR}/IFXScheduling.def )
-#  TARGET_LINK_LIBRARIES( IFXScheduling IFXCore )
-#ENDIF(WIN32)
-#IF(APPLE)
-#  ADD_LIBRARY( IFXScheduling  MODULE ${IFXScheduling_SRCS} ${IFXScheduling_HDRS} )
-#  set_target_properties( IFXScheduling  PROPERTIES
-#	LINK_FLAGS "${MY_LINK_FLAGS} -exported_symbols_list ${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Mac32/IFXScheduling/IFXScheduling.def   -undefined dynamic_lookup" )
-#ENDIF(APPLE)
-#IF(UNIX AND NOT APPLE)
-#  ADD_LIBRARY( IFXScheduling  MODULE ${IFXScheduling_SRCS} ${IFXScheduling_HDRS} )
-#  set_target_properties( IFXScheduling  PROPERTIES
-#	LINK_FLAGS "-Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Lin32/IFXScheduling/IFXScheduling.list" )
-#ENDIF(UNIX AND NOT APPLE)
-

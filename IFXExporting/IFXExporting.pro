@@ -10,7 +10,7 @@ linux{
 	U3D_PLATFORM=Lin32
 }
 macx {
-    DEFINES+=MAC32
+	DEFINES+=MAC32
 	U3D_PLATFORM=Mac32
 }
 
@@ -79,39 +79,17 @@ SOURCES += \
 	$${BASE_SRC_RTL}/Dependencies/WildCards/wcmatch.cpp \
 	$${BASE_SRC_RTL}/Kernel/Common/IFXDebug.cpp
 
-linux  {
-	#QMAKE_LFLAGS += -Wl --version-script=$${BASE_SRC_RTL}/Platform/Lin32/IFXExporting/IFXExporting.list
-}
 macx {
     QMAKE_LFLAGS += -exported_symbols_list $${BASE_SRC_RTL}/Platform/Mac32/IFXExporting/IFXExporting.def   -undefined dynamic_lookup
 	QMAKE_LFLAGS_PLUGIN -= -dynamiclib
 	QMAKE_LFLAGS_PLUGIN += -bundle
 	QMAKE_EXTENSION_SHLIB = so
 }
+
 win32 {
-    RC_FILE = $${BASE_SRC_RTL}/Platform/Win32/IFXExporting/IFXExporting.rc
-
-HEADERS += \
-    $${BASE_SRC_RTL}//Platform/Win32/IFXExporting/IFXResource.h
-
-    DEF_FILE = $${BASE_SRC_RTL}/Platform/Win32/IFXExporting/IFXExporting.def
-
-    LIBS += winmm.lib user32.lib -L$$DESTDIR/ -lIFXCore
+	RC_FILE = $${BASE_SRC_RTL}/Platform/Win32/IFXExporting/IFXExporting.rc
+	HEADERS += \
+		$${BASE_SRC_RTL}//Platform/Win32/IFXExporting/IFXResource.h
+	DEF_FILE = $${BASE_SRC_RTL}/Platform/Win32/IFXExporting/IFXExporting.def
+	LIBS += winmm.lib user32.lib -L$$DESTDIR/ -lIFXCore
 }
-
-
-#IF(WIN32)
-#  SET( EXPORT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Win32/IFXExporting )
-#  ADD_LIBRARY( IFXExporting  SHARED ${IFXExporting_SRCS} ${IFXExporting_HDRS} ${EXPORT_DIR}/IFXExporting.rc ${EXPORT_DIR}/IFXResource.h ${EXPORT_DIR}/IFXExporting.def )
-#  TARGET_LINK_LIBRARIES( IFXExporting IFXCore )
-#ENDIF(WIN32)
-#IF(APPLE)
-#  ADD_LIBRARY( IFXExporting  MODULE ${IFXExporting_SRCS} ${IFXExporting_HDRS} )
-#  set_target_properties( IFXExporting  PROPERTIES
-#	LINK_FLAGS "${MY_LINK_FLAGS} -exported_symbols_list ${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Mac32/IFXExporting/IFXExporting.def   -undefined dynamic_lookup" )
-#ENDIF(APPLE)
-#IF(UNIX AND NOT APPLE)
-#  ADD_LIBRARY( IFXExporting  MODULE ${IFXExporting_SRCS} ${IFXExporting_HDRS} )
-#  set_target_properties( IFXExporting  PROPERTIES
-#	LINK_FLAGS "-Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Lin32/IFXExporting/IFXExporting.list" )
-#ENDIF(UNIX AND NOT APPLE)

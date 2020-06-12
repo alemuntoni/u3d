@@ -232,38 +232,19 @@ SOURCES += \
 	$${BASE_SRC_RTL}/Kernel/Common/IFXDebug.cpp
 
 linux {
-	#QMAKE_LFLAGS += -Wl --version-script=$${BASE_SRC_RTL}/Platform/Lin32/IFXCore/IFXCore.list -Wl,--no-undefined
 	LIBS += -ldl
 }
+
 macx {
-    QMAKE_LFLAGS_PLUGIN -= -dynamiclib
+	QMAKE_LFLAGS_PLUGIN -= -dynamiclib
 	QMAKE_LFLAGS_PLUGIN += -bundle
 	QMAKE_EXTENSION_SHLIB = so
 }
+
 win32 {
-
-RC_FILE = $${BASE_SRC_RTL}/Platform/Win32/IFXCore/IFXCore.rc
-
-HEADERS += \
-    $${BASE_SRC_RTL}//Platform/Win32/IFXCore/IFXResource.h
-
-DEF_FILE = $${BASE_SRC_RTL}/Platform/Win32/IFXCore/IFXCore.def
-
-LIBS += winmm.lib user32.lib
+	RC_FILE = $${BASE_SRC_RTL}/Platform/Win32/IFXCore/IFXCore.rc
+	HEADERS += \
+		$${BASE_SRC_RTL}//Platform/Win32/IFXCore/IFXResource.h
+	DEF_FILE = $${BASE_SRC_RTL}/Platform/Win32/IFXCore/IFXCore.def
+	LIBS += winmm.lib user32.lib
 }
-
-#IF(WIN32)
-#  SET( CORE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Win32/IFXCore )
-#  ADD_LIBRARY( IFXCore SHARED ${IFXCore_SRCS} ${IFXCore_HDRS} ${CORE_DIR}/IFXCore.rc ${CORE_DIR}/IFXResource.h ${CORE_DIR}/IFXCore.def ${DEPENDENCIES_SRCS} )
-#ENDIF(WIN32)
-#IF(APPLE)
-#  ADD_LIBRARY( IFXCore MODULE ${IFXCore_SRCS} ${IFXCore_HDRS} ${DEPENDENCIES_SRCS} )
-#  set_target_properties( IFXCore PROPERTIES
-#	LINK_FLAGS "${MY_LINK_FLAGS} -exported_symbols_list ${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Mac32/IFXCore/IFXCore.def" )
-#ENDIF(APPLE)
-#IF(UNIX AND NOT APPLE)
-#  ADD_LIBRARY( IFXCore MODULE ${IFXCore_SRCS} ${IFXCore_HDRS} ${DEPENDENCIES_SRCS} )
-#  set_target_properties( IFXCore PROPERTIES
-#	LINK_FLAGS "-Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/RTL/Platform/Lin32/IFXCore/IFXCore.list -Wl,--no-undefined" )
-#  target_link_libraries( IFXCore ${CMAKE_DL_LIBS} )
-#ENDIF(UNIX AND NOT APPLE)

@@ -6,8 +6,6 @@
 #define OUTPUT "/Users/alessandro/tmp/dod.u3d"
 
 #elif WIN32
-//#define INPUT "C:\\Users\\alemu\\tmp\\dod.idtf"
-//#define OUTPUT "C:\\Users\\alemu\\tmp\\dod.u3d"
 #define INPUT "C:/Users/alemu/tmp/dod.idtf"
 #define OUTPUT "C:/Users/alemu/tmp/dod.u3d"
 #else
