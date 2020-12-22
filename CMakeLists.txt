@@ -1,4 +1,9 @@
+project(u3dConverter)
+cmake_minimum_required(VERSION 3.9)
+
 set (U3D_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+
+option(BUILD_TEST "Build a binary that links and converts an IDTF file" OFF)
 
 IF(APPLE)
 	ADD_DEFINITIONS( -DMAC32 -fno-strict-aliasing )
@@ -1488,5 +1493,10 @@ SET_PROPERTY( SOURCE
 	${U3D_DIR}/src/RTL/Platform/${U3D_PLATFORM}/Common/IFXOSLoader.cpp
 	PROPERTY COMPILE_DEFINITIONS U3DPluginsPath="Plugins" U3DCorePath="${U3D_LIB_RELATIVE_PATH}" U3DInstallPath="${U3D_INSTALL_RELATIVE_PATH}" STDIO_HACK )
 ENDIF(STDIO_HACK)
+
+if(BUILD_TEST)
+	add_executable(IDTFTest ${U3D_DIR}/src/IDTFTest/main.cpp)
+	target_link_libraries(IDTFTest PUBLIC external-IDTFConverter IFXCoreStatic ${CMAKE_DL_LIBS})
+endif()
 
 install(TARGETS IFXCore IFXExporting IFXScheduling DESTINATION ${MESHLAB_LIB_INSTALL_DIR})

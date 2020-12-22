@@ -17,7 +17,8 @@
 
 int main (int, char *[])
 {
-	bool res = IDTFConverter::IDTFToU3d(INPUT, OUTPUT);
+	int res;
+	IDTFConverter::IDTFToU3d(INPUT, OUTPUT, res);
 	return !res;
 }
 
