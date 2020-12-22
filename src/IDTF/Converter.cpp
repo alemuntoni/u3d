@@ -37,17 +37,14 @@
 #include <windows.h>
 #endif
 
-#include "Converter.h"
-#include "ConverterResult.h"
-#include "IFXDebug.h"
+
+#include <clocale>
 #include "IFXCOM.h"
 
 #include "ConverterHelpers.h"
-#include "ConverterOptions.h"
 #include "FileParser.h"
 #include "SceneConverter.h"
 #include "SceneUtilities.h"
-#include "IFXOSUtilities.h"
 
 using namespace U3D_IDTF;
 
@@ -91,22 +88,13 @@ bool IDTFToU3d(
 	int argc = 11;
 
 	IFXRESULT result = IFX_OK;
-//#ifdef WIN32
-//	wchar_t **argw = NULL;
-//#endif
-//#ifndef WIN32
 	wchar_t **argw = NULL;
 	int i;
-//#endif
 
-	result = IFXSetDefaultLocale();
-	IFXTRACE_GENERIC(L"[Converter] IFXSetDefaultLocale %i\n", result);
+	if (std::setlocale(LC_CTYPE, "en_US.UTF-8") == nullptr)
+		return -1;
 
 	if( IFXSUCCESS(result) ) {
-//#ifdef WIN32
-//		argw = CommandLineToArgvW(GetCommandLineW(), &argc);
-//#endif
-//#ifndef WIN32
 		argw = (wchar_t**)malloc(argc*sizeof(wchar_t*));
 		if (argw == NULL)
 			result = IFX_E_OUT_OF_MEMORY;
@@ -123,7 +111,6 @@ bool IDTFToU3d(
 				}
 			}
 		}
-//#endif
 	}
 
 
