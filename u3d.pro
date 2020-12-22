@@ -8,7 +8,7 @@ SUBDIRS = \
 	IFXScheduling \
 	IDTFConverter
 
-SUBDIRS += IDTFTest
+#SUBDIRS += IDTFTest
 
 IFXCoreStatic.subdir = IFXCoreStatic
 IFXCore.subdir = IFXCore

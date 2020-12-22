@@ -1,7 +1,8 @@
+include(../../ext_common.pri)
 TEMPLATE = lib
 CONFIG += dll
 TARGET = IFXCore
-DESTDIR = ../
+#DESTDIR = ../
 
 BASE_SRC_IDTF = $${PWD}/../src/IDTF
 BASE_SRC_RTL = $${PWD}/../src/RTL
@@ -10,7 +11,7 @@ linux{
 	U3D_PLATFORM=Lin32
 }
 macx {
-    DEFINES+=MAC32
+	DEFINES+=MAC32
 	U3D_PLATFORM=Mac32
 }
 

@@ -1,7 +1,9 @@
+include(../../ext_common.pri)
 TEMPLATE = lib
 CONFIG += staticlib
+CONFIG += c++11
 TARGET = IDTFConverter
-DESTDIR = ../
+#DESTDIR = ../
 
 BASE_SRC_IDTF = $${PWD}/../src/IDTF
 BASE_SRC_RTL = $${PWD}/../src/RTL
